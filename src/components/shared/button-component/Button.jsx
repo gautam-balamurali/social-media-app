@@ -6,6 +6,7 @@ const Button = ({
   style,
   disabled,
   title,
+  type,
 }) => {
   const handleClick = () => {
     if (typeof clickHandlerFunction === "function") {
@@ -24,6 +25,7 @@ const Button = ({
       onClick={handleClick}
       disabled={disabled}
       title={title}
+      type={type}
     >
       {label}
     </button>

@@ -1,0 +1,121 @@
+.signup-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 1rem - 1rem);
+  }
+  
+  .signup-card {
+    border: 1.5px solid #ccc;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 20rem;
+  }
+  
+  .signup-content {
+    text-align: center;
+    padding-bottom: 0.5rem;
+  }
+  
+  .email-section label,
+  .pswd-section label,
+  .firstName-section label,
+  .lastName-section label {
+    color: #555;
+    display: block;
+    font-weight: 700;
+    padding-bottom: 5px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1rem;
+    padding-left: 0.4rem;
+  }
+  
+  .email-section input,
+  .pswd-section input,
+  .firstName-section input,
+  .lastName-section input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 1rem;
+    width: 100%;
+    word-spacing: 2px;
+    letter-spacing: 2px;
+  }
+  
+  .email-section,
+  .pswd-section,
+  .firstName-section,
+  .lastName-section {
+    text-align: start;
+    padding-bottom: 0.7rem;
+  }
+  
+  .pswd-section {
+    padding-bottom: 1rem;
+  }
+  
+  .signup-btn {
+    background-color: #2874f0;
+    border: 1px solid #2874f0;
+    border-radius: 0.3rem;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.5rem;
+    width: 100%;
+  }
+  
+  .signup-btn:hover {
+    border: 1px solid #2874f0;
+    background-color: #fff;
+    color: #2874f0;
+  }
+  
+  .form-info-last {
+    padding-top: 0.5rem;
+    text-align: center;
+  }
+  
+  .login {
+    color: #2874f0;
+    font-weight: bold;
+  }
+  
+  .eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 4%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  @media (min-width: 412px) and (max-width: 500px) {
+    .signup-page {
+      height: calc(100vh - 10rem - 6rem);
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .signup-page {
+      height: calc(100vh - 10rem - 10rem);
+    }
+  
+    .signup-card {
+      width: 30rem;
+      padding: 1rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .signup-page {
+      height: 110vh;
+    }
+  }
+  
