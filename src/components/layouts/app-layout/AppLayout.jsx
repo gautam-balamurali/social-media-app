@@ -1,5 +1,11 @@
+import AppRoutes from "core/app-routes/AppRoutes";
+
 const AppLayout = () => {
-  return <div>AppLayout</div>;
+  return (
+    <section className="section">
+      <AppRoutes />
+    </section>
+  );
 };
 
 export default AppLayout;
