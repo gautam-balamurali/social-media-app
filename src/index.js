@@ -4,6 +4,8 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { makeServer } from "./server";
+import { AuthenticationProvider } from "core/contexts/authentication-context/AuthenticationContext";
+import { BrowserRouter } from "react-router-dom";
 
 // Call make Server
 makeServer();
@@ -11,7 +13,11 @@ makeServer();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <AuthenticationProvider>
+        <App />
+      </AuthenticationProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

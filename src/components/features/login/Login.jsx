@@ -1,7 +1,120 @@
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 import "./Login.css";
+import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
+import InputField from "components/shared/input-field-component/InputField";
+import Button from "components/shared/button-component/Button";
 
 const Login = () => {
-  return <div>Login</div>;
+  const [loginCredentials, setLoginCredentials] = useState({
+    username: "",
+    password: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { token, loginUser } = useAuthentication();
+
+  const guestLoginCredentials = {
+    username: "adarshbalika",
+    password: "adarshBalika123",
+  };
+
+  const loginCredentialsChangeHandler = (event) => {
+    const { name, value } = event.target;
+    setLoginCredentials((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const loginClickHandler = async (loginCredentials) => {
+    const userDetails = await loginUser(loginCredentials);
+    if (userDetails) {
+      console.log(`Welcome back, ${userDetails?.firstName}!`);
+    } else {
+      console.error("Login failed! Please try again with correct credentials.");
+    }
+  };
+
+  const loginAsAGuestClickHandler = () => {
+    setLoginCredentials((prev) => ({ ...prev, ...guestLoginCredentials }));
+    loginClickHandler(guestLoginCredentials);
+  };
+
+  const submitFormHandler = (event) => {
+    event.preventDefault();
+    loginClickHandler(loginCredentials);
+  };
+
+  const toggleShowHidePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (token)
+      navigate(location?.state?.from.pathname || "/", { replace: true });
+    // eslint-disable-next-line
+  }, [token]);
+
+  return (
+    <div className="login-page">
+      <div className="login-card">
+        <form
+          className="login-content"
+          onSubmit={submitFormHandler}
+          autoComplete="off"
+        >
+          <h2>Login</h2>
+          <div className="username-section">
+            <InputField
+              className={"username-txt-inpt"}
+              label={"Username"}
+              label_class={"username"}
+              type={"text"}
+              name={"username"}
+              value={loginCredentials.username}
+              placeholder={"johndoe123"}
+              onChangeFunction={loginCredentialsChangeHandler}
+              required={true}
+            />
+          </div>
+          <div className="pswd-section">
+            <div
+              className="eye-icon"
+              aria-hidden="true"
+              onClick={toggleShowHidePassword}
+            >
+              {showPassword ? <FaEye size={24} /> : <FaEyeSlash size={24} />}
+            </div>
+            <InputField
+              className={"pswd-txt-inpt"}
+              label={"Password"}
+              label_class={"pswd"}
+              type={showPassword ? "text" : "password"}
+              name={"password"}
+              value={loginCredentials.password}
+              placeholder={"****************"}
+              onChangeFunction={loginCredentialsChangeHandler}
+              required={true}
+            />
+          </div>
+          <Button type={"submit"} className={"login-btn"} label={"Login"} />
+        </form>
+        <Button
+          clickHandlerFunction={loginAsAGuestClickHandler}
+          className={"login-btn"}
+          label={"Login as Guest"}
+        />
+        <p className="form-info-last">
+          Don't have an account?
+          <Link to={"/sign-up"} style={{ textDecoration: "none" }}>
+            <span className="sign-up"> Sign Up </span>
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
 };
 
 export default Login;
