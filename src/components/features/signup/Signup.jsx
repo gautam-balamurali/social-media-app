@@ -84,97 +84,103 @@ const Signup = () => {
           autoComplete="off"
         >
           <h2>Sign Up</h2>
-          <div className="firstName-section">
-            <InputField
-              className={"firstName-txt-inpt"}
-              label={"First Name"}
-              label_class={"firstName"}
-              type={"text"}
-              name={"firstName"}
-              value={signUpCredentials.firstName}
-              placeholder={"John"}
-              onChangeFunction={signUpCredentialsChangeHandler}
-              required={true}
-            />
-          </div>
-          <div className="lastName-section">
-            <InputField
-              className={"lastName-txt-inpt"}
-              label={"Last Name"}
-              label_class={"lastName"}
-              type={"text"}
-              name={"lastName"}
-              value={signUpCredentials.lastName}
-              placeholder={"Doe"}
-              onChangeFunction={signUpCredentialsChangeHandler}
-              required={true}
-            />
-          </div>
-          <div className="email-section">
-            <InputField
-              className={"email-txt-inpt"}
-              label={"Email"}
-              label_class={"email"}
-              type={"email"}
-              name={"email"}
-              value={signUpCredentials.email}
-              placeholder={"johndoe@gmail.com"}
-              onChangeFunction={signUpCredentialsChangeHandler}
-              required={true}
-            />
-          </div>
-          <div className="username-section">
-            <InputField
-              className={"username-txt-inpt"}
-              label={"Username"}
-              label_class={"username"}
-              type={"text"}
-              name={"username"}
-              value={signUpCredentials.username}
-              placeholder={"johndoe123"}
-              onChangeFunction={signUpCredentialsChangeHandler}
-              required={true}
-            />
-          </div>
-          <div className="pswd-section">
-            <div
-              className="eye-icon"
-              aria-hidden="true"
-              onClick={toggleShowHidePassword}
-            >
-              {showPassword ? <FaEye size={24} /> : <FaEyeSlash size={24} />}
+          <div className="name-inpt-section">
+            <div className="firstName-section">
+              <InputField
+                className={"firstName-txt-inpt"}
+                label={"First Name"}
+                label_class={"firstName"}
+                type={"text"}
+                name={"firstName"}
+                value={signUpCredentials.firstName}
+                placeholder={"John"}
+                onChangeFunction={signUpCredentialsChangeHandler}
+                required={true}
+              />
             </div>
-            <InputField
-              className={"pswd-txt-inpt"}
-              label={"Password"}
-              label_class={"pswd"}
-              type={showPassword ? "text" : "password"}
-              name={"password"}
-              value={signUpCredentials.password}
-              placeholder={"****************"}
-              onChangeFunction={signUpCredentialsChangeHandler}
-              required={true}
-            />
-          </div>
-          <div className="pswd-section">
-            <div
-              className="eye-icon"
-              aria-hidden="true"
-              onClick={toggleShowHidePassword}
-            >
-              {showPassword ? <FaEye size={24} /> : <FaEyeSlash size={24} />}
+            <div className="lastName-section">
+              <InputField
+                className={"lastName-txt-inpt"}
+                label={"Last Name"}
+                label_class={"lastName"}
+                type={"text"}
+                name={"lastName"}
+                value={signUpCredentials.lastName}
+                placeholder={"Doe"}
+                onChangeFunction={signUpCredentialsChangeHandler}
+                required={true}
+              />
             </div>
-            <InputField
-              className={"pswd-txt-inpt"}
-              label={"Confirm Password"}
-              label_class={"pswd"}
-              type={showPassword ? "text" : "password"}
-              name={"confirmPassword"}
-              value={signUpCredentials.confirmPassword}
-              placeholder={"****************"}
-              onChangeFunction={signUpCredentialsChangeHandler}
-              required={true}
-            />
+          </div>
+          <div className="email-username-container">
+            <div className="email-section">
+              <InputField
+                className={"email-txt-inpt"}
+                label={"Email"}
+                label_class={"email"}
+                type={"email"}
+                name={"email"}
+                value={signUpCredentials.email}
+                placeholder={"johndoe@gmail.com"}
+                onChangeFunction={signUpCredentialsChangeHandler}
+                required={true}
+              />
+            </div>
+            <div className="username-section">
+              <InputField
+                className={"username-txt-inpt"}
+                label={"Username"}
+                label_class={"username"}
+                type={"text"}
+                name={"username"}
+                value={signUpCredentials.username}
+                placeholder={"johndoe123"}
+                onChangeFunction={signUpCredentialsChangeHandler}
+                required={true}
+              />
+            </div>
+          </div>
+          <div className="password-setion-container">
+            <div className="pswd-section">
+              <div
+                className="eye-icon"
+                aria-hidden="true"
+                onClick={toggleShowHidePassword}
+              >
+                {showPassword ? <FaEye size={18} /> : <FaEyeSlash size={18} />}
+              </div>
+              <InputField
+                className={"pswd-txt-inpt"}
+                label={"Password"}
+                label_class={"pswd"}
+                type={showPassword ? "text" : "password"}
+                name={"password"}
+                value={signUpCredentials.password}
+                placeholder={"****************"}
+                onChangeFunction={signUpCredentialsChangeHandler}
+                required={true}
+              />
+            </div>
+            <div className="pswd-section">
+              <div
+                className="eye-icon"
+                aria-hidden="true"
+                onClick={toggleShowHidePassword}
+              >
+                {showPassword ? <FaEye size={18} /> : <FaEyeSlash size={18} />}
+              </div>
+              <InputField
+                className={"pswd-txt-inpt"}
+                label={"Confirm Password"}
+                label_class={"pswd"}
+                type={showPassword ? "text" : "password"}
+                name={"confirmPassword"}
+                value={signUpCredentials.confirmPassword}
+                placeholder={"****************"}
+                onChangeFunction={signUpCredentialsChangeHandler}
+                required={true}
+              />
+            </div>
           </div>
           <Button type={"submit"} className={"signup-btn"} label={"Sign Up"} />
         </form>

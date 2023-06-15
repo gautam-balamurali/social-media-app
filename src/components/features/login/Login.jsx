@@ -66,11 +66,11 @@ const Login = () => {
           autoComplete="off"
         >
           <h2>Login</h2>
-          <div className="username-section">
+          <div className="username-login-section">
             <InputField
-              className={"username-txt-inpt"}
+              className={"username-login-txt-inpt"}
               label={"Username"}
-              label_class={"username"}
+              label_class={"username-login"}
               type={"text"}
               name={"username"}
               value={loginCredentials.username}
@@ -79,18 +79,18 @@ const Login = () => {
               required={true}
             />
           </div>
-          <div className="pswd-section">
+          <div className="pswd-login-section">
             <div
               className="eye-icon"
               aria-hidden="true"
               onClick={toggleShowHidePassword}
             >
-              {showPassword ? <FaEye size={24} /> : <FaEyeSlash size={24} />}
+              {showPassword ? <FaEye size={18} /> : <FaEyeSlash size={18} />}
             </div>
             <InputField
-              className={"pswd-txt-inpt"}
+              className={"pswd-login-txt-inpt"}
               label={"Password"}
-              label_class={"pswd"}
+              label_class={"pswd-login"}
               type={showPassword ? "text" : "password"}
               name={"password"}
               value={loginCredentials.password}
