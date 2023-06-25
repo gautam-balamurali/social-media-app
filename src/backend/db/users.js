@@ -15,5 +15,7 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     bookmarks: [],
+    followers: [],
+    following: [],
   },
 ];

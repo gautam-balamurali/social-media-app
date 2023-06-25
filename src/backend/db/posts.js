@@ -19,6 +19,7 @@ export const posts = [
     username: "adarshbalika",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    comments: [],
   },
   {
     _id: uuid(),
@@ -32,5 +33,6 @@ export const posts = [
     username: "shubhamsoni",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    comments: [],
   },
 ];
