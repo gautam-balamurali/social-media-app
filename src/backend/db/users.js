@@ -12,6 +12,7 @@ export const users = [
     lastName: "Balika",
     username: "adarshbalika",
     password: "adarshBalika123",
+    picUrl: "http://bit.ly/42Zm7tM",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     bookmarks: [],
