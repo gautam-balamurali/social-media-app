@@ -1,5 +1,5 @@
 export * from "./explore-feed-page/ExploreFeedPage";
-export * from "./following-feed-page/FollowingFeedPage";
+export * from "./home-feed-page/HomeFeedPage";
 export * from "./login-page/LoginPage";
 export * from "./other-profile-page/OtherProfilePage";
 export * from "./page-not-found/PageNotFound";
