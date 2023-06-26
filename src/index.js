@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { makeServer } from "./server";
 import { AuthenticationProvider } from "core/contexts/authentication-context/AuthenticationContext";
 import { BrowserRouter } from "react-router-dom";
+import { PostsProvider } from "core/contexts/posts-context/PostsContext";
 
 // Call make Server
 makeServer();
@@ -15,7 +16,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthenticationProvider>
-        <App />
+        <PostsProvider>
+          <App />
+        </PostsProvider>
       </AuthenticationProvider>
     </BrowserRouter>
   </React.StrictMode>
