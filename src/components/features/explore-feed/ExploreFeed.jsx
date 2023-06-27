@@ -5,15 +5,15 @@ import "./ExploreFeed.css";
 const ExploreFeed = () => {
   const { posts, appliedFilterPosts, isLoading } = usePosts();
 
-  const filteredHomeFeedPosts = appliedFilterPosts(posts);
+  const filteredExploreFeedPosts = appliedFilterPosts(posts);
 
   return (
     <div className="posts-container">
-      {filteredHomeFeedPosts?.length > 0 &&
-        filteredHomeFeedPosts.map((post) => (
+      {filteredExploreFeedPosts?.length > 0 &&
+        filteredExploreFeedPosts.map((post) => (
           <FeedPostCard key={post._id} post={post} />
         ))}
-      {filteredHomeFeedPosts?.length < 1 && !isLoading && (
+      {filteredExploreFeedPosts?.length < 1 && !isLoading && (
         <h3>No posts found.</h3>
       )}
     </div>
