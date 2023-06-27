@@ -6,6 +6,7 @@ import SignupPage from "pages/signup-page/SignupPage";
 import HomeFeedPage from "pages/home-feed-page/HomeFeedPage";
 import ExploreFeedPage from "pages/explore-feed-page/ExploreFeedPage";
 import { AuthGuard } from "core/auth-guard/AuthGuard";
+import BookmarkedPostsPage from "pages/bookmarked-posts-page/BookmarkedPostsPage";
 
 const AppRoutes = () => {
   const protectedRoutes = [
@@ -16,6 +17,10 @@ const AppRoutes = () => {
     {
       path: "/explore",
       component: ExploreFeedPage,
+    },
+    {
+      path: "/bookmarks",
+      component: BookmarkedPostsPage,
     },
   ];
 
