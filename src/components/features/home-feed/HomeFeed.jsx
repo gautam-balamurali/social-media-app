@@ -1,11 +1,20 @@
+import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
 import { usePosts } from "core/contexts/posts-context/PostsContext";
+import "./HomeFeed.css";
 import FeedPostCard from "components/shared/feed-post-card-components/FeedPostCard";
-import "./ExploreFeed.css";
 
-const ExploreFeed = () => {
+const HomeFeed = () => {
+  const { user } = useAuthentication();
   const { posts, appliedFilterPosts, isLoading } = usePosts();
 
-  const filteredHomeFeedPosts = appliedFilterPosts(posts);
+  const homeFeedPosts = posts?.filter(
+    (post) =>
+      user?.following.some(
+        (followingUser) => followingUser?.username === post?.username
+      ) || user?.username === post?.username
+  );
+
+  const filteredHomeFeedPosts = appliedFilterPosts(homeFeedPosts);
 
   return (
     <div className="posts-container">
@@ -20,4 +29,4 @@ const ExploreFeed = () => {
   );
 };
 
-export default ExploreFeed;
+export default HomeFeed;

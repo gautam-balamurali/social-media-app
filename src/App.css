@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap");
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -71,4 +73,28 @@ label {
   cursor: pointer;
   font-family: "Shantell Sans", cursive;
   letter-spacing: 0.1em;
+}
+
+.ss-view {
+  display: inline-block;
+}
+
+.ms-view,
+.ls-view {
+  display: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .ss-view {
+    display: none;
+  }
+
+  .ms-view,
+  .ls-view {
+    display: inline-block;
+  }
 }
