@@ -4,6 +4,11 @@ import { postsReducer } from "core/reducers/posts-reducer/PostsReducerFunction";
 import { postsReducerInitialState } from "core/reducers/posts-reducer/PostsReducerInitialState";
 import { getAllPostsService } from "core/services/posts-service/posts.service";
 import { useAuthentication } from "../authentication-context/AuthenticationContext";
+import {
+  addToBookmarkService,
+  getBookmarkPostsService,
+  removeFromBookmarkService,
+} from "core/services/bookmark-service/bookmark.service";
 
 export const PostsContext = createContext();
 
@@ -16,7 +21,6 @@ export const PostsProvider = ({ children }) => {
   const { token } = useAuthentication();
 
   const fetchAllPosts = async () => {
-    postsDispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await getAllPostsService();
       console.log({ response }, "fetchAllPostsService");
@@ -28,8 +32,6 @@ export const PostsProvider = ({ children }) => {
       }
     } catch (error) {
       console.error(error);
-    } finally {
-      postsDispatch({ type: "LOADER_STOPPED" });
     }
   };
 
@@ -50,15 +52,69 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  const fetchAllBookmarkedPosts = async () => {
+    try {
+      const response = await getBookmarkPostsService(token);
+      console.log({ response }, "fetchBookmarkedPosts");
+      if (response.status === 200 || response.status === 201) {
+        postsDispatch({
+          type: "FETCH_ALL_BOOKMARKS",
+          payload: response?.data?.bookmarks,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addPostToBookmarks = async (postId) => {
+    try {
+      const response = await addToBookmarkService(postId, token);
+      console.log({ response }, "addPostToBookmarks");
+      if (response.status === 200 || response.status === 201) {
+        postsDispatch({
+          type: "ADD_TO_BOOKMARKS",
+          payload: response?.data?.bookmarks,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const removePostFromBookmarks = async (postId) => {
+    try {
+      const response = await removeFromBookmarkService(postId, token);
+      console.log({ response }, "removePostFromBookmarks");
+      if (response.status === 200 || response.status === 201) {
+        postsDispatch({
+          type: "REMOVE_FROM_BOOKMARKS",
+          payload: response?.data?.bookmarks,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     if (token) {
+      postsDispatch({ type: "LOADER_INITIATED" });
       fetchAllPosts();
+      fetchAllBookmarkedPosts();
+      postsDispatch({ type: "LOADER_STOPPED" });
     }
   }, [token]);
 
   return (
     <PostsContext.Provider
-      value={{ ...state, postsDispatch, appliedFilterPosts }}
+      value={{
+        ...state,
+        postsDispatch,
+        appliedFilterPosts,
+        addPostToBookmarks,
+        removePostFromBookmarks,
+      }}
     >
       {children}
     </PostsContext.Provider>

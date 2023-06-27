@@ -14,12 +14,16 @@ import { formatDate } from "utils/date-formatter/dateFormat";
 import "./FeedPostCard.css";
 import OutsideClickHandler from "react-outside-click-handler";
 import Button from "../button-component/Button";
+import { usePosts } from "core/contexts/posts-context/PostsContext";
 
 const FeedPostCard = ({ post }) => {
-  const { _id, content, likes, username, updatedAt, comments, isBookmarked } =
-    post;
+  const { _id, content, likes, username, updatedAt, comments } = post;
 
   const [showPostConfigMenu, setShowPostConfigMenu] = useState(false);
+
+  const { bookmarks, addPostToBookmarks, removePostFromBookmarks } = usePosts();
+
+  const isBookmarked = (postId) => bookmarks.includes(postId);
 
   const addLineBreaks = (text) => {
     const sentences = text.split(".");
@@ -137,13 +141,17 @@ const FeedPostCard = ({ post }) => {
           <Button
             label={
               <>
-                {isBookmarked ? (
+                {isBookmarked(_id) ? (
                   <BsBookmarkFill size={18} />
                 ) : (
                   <BsBookmark size={18} />
                 )}
               </>
             }
+            clickHandlerFunction={
+              isBookmarked(_id) ? removePostFromBookmarks : addPostToBookmarks
+            }
+            params={_id}
           />
         </div>
       </div>
