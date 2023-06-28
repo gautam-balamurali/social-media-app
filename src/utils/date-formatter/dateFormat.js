@@ -12,6 +12,7 @@ export const formatDate = (createdDate) => {
           day: "numeric",
           year: "numeric",
           month: "short",
+          weekday: "short",
         });
       } else {
         return hr > 1 ? `${hr} hrs ago` : `${hr} hr ago`;
