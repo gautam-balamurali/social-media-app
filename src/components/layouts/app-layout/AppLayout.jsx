@@ -18,7 +18,9 @@ const AppLayout = () => {
       {!onAuthenticationPage() && <Header />}
       <section className="section grid-layout">
         <Sidebar />
-        <AppRoutes />
+        <div className="scrollable">
+          <AppRoutes />
+        </div>
       </section>
       <Footer />
       <Navbar />

@@ -1,16 +1,16 @@
 .navbar {
   display: flex;
-  padding: 1rem;
+  padding: 0.75rem;
   width: 100%;
   left: 0;
   right: 0;
   bottom: 0;
-  color: var(--primary-color);
   font-weight: 500;
   position: sticky;
   z-index: 2000;
   background-color: var(--secondary-color);
   align-items: center;
+  border-top: 2px solid var(--dark-shade-color);
 }
 
 .navbar ul {

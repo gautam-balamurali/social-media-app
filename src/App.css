@@ -32,6 +32,18 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
 .App {
   max-width: 100vw;
   /* min-height: 100vh; */
@@ -115,6 +127,18 @@ label {
 }
 
 @media (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  p {
+    font-size: 1.125rem;
+  }
+
   .ss-view {
     display: none;
   }
@@ -122,5 +146,19 @@ label {
   .ms-view,
   .ls-view {
     display: inline-block;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.25rem;
   }
 }
