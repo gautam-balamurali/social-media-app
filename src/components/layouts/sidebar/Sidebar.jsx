@@ -1,13 +1,9 @@
 import { AiFillHome, AiOutlineHome } from "react-icons/ai";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MdExplore, MdOutlineExplore } from "react-icons/md";
-import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
-import {
-  FaHeart,
-  FaRegHeart,
-  FaRegUserCircle,
-  FaUserCircle,
-} from "react-icons/fa";
+import { BsBookmarks, BsBookmarksFill } from "react-icons/bs";
+import { FaRegUserCircle, FaUserCircle } from "react-icons/fa";
+import { RiHeartsLine, RiHeartsFill } from "react-icons/ri";
 
 import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
 import "./Sidebar.css";
@@ -20,7 +16,7 @@ const Sidebar = () => {
   const isActiveRoute = (pathname) => location.pathname === pathname;
 
   return (
-    <div className="sidebar">
+    <aside className="sidebar">
       <nav className="sidebar-navigation">
         <ul>
           <li
@@ -59,9 +55,9 @@ const Sidebar = () => {
           >
             <div className="nav-link">
               {isActiveRoute("/bookmarks") ? (
-                <BsBookmarkFill className="nav-item" title="Home" size={24} />
+                <BsBookmarksFill className="nav-item" title="Home" size={24} />
               ) : (
-                <BsBookmark className="nav-item" title="Bookmarks" size={24} />
+                <BsBookmarks className="nav-item" title="Bookmarks" size={24} />
               )}
             </div>
             <p>Bookmarks</p>
@@ -72,9 +68,13 @@ const Sidebar = () => {
           >
             <div className="nav-link">
               {isActiveRoute("/liked-posts") ? (
-                <FaHeart className="nav-item" title="Liked Posts" size={24} />
+                <RiHeartsFill
+                  className="nav-item"
+                  title="Liked Posts"
+                  size={24}
+                />
               ) : (
-                <FaRegHeart className="nav-item" title="Home" size={24} />
+                <RiHeartsLine className="nav-item" title="Home" size={24} />
               )}
             </div>
             <p>Liked Posts</p>
@@ -109,7 +109,7 @@ const Sidebar = () => {
           <p>@{user?.username}</p>
         </div>
       </div>
-    </div>
+    </aside>
   );
 };
 

@@ -35,7 +35,7 @@ const Footer = () => {
             href="https://github.com/gautam-balamurali"
             rel="noopener noreferrer"
           >
-            <FaGithub />
+            <FaGithub size={24} />
           </a>
         </li>
         <li>
@@ -45,7 +45,7 @@ const Footer = () => {
             href="https://www.linkedin.com/in/gautam-balamurali"
             rel="noopener noreferrer"
           >
-            <FaLinkedin />
+            <FaLinkedin size={24} />
           </a>
         </li>
         <li>
@@ -55,7 +55,7 @@ const Footer = () => {
             href="https://twitter.com/codewithash"
             rel="noopener noreferrer"
           >
-            <FaTwitter />
+            <FaTwitter size={24} />
           </a>
         </li>
         <li>
@@ -65,7 +65,7 @@ const Footer = () => {
             href="https://www.instagram.com/gautam.bm/"
             rel="noopener noreferrer"
           >
-            <FaInstagram />
+            <FaInstagram size={24} />
           </a>
         </li>
       </ul>

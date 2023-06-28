@@ -1,13 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineHome, AiFillHome } from "react-icons/ai";
 import { MdOutlineExplore, MdExplore } from "react-icons/md";
-import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
-import {
-  FaHeart,
-  FaRegHeart,
-  FaRegUserCircle,
-  FaUserCircle,
-} from "react-icons/fa";
+import { BsBookmarks, BsBookmarksFill } from "react-icons/bs";
+import { FaRegUserCircle, FaUserCircle } from "react-icons/fa";
+import { RiHeartsLine, RiHeartsFill } from "react-icons/ri";
 
 import "./Navbar.css";
 
@@ -15,12 +11,14 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isActiveRoute = (pathname) => location.pathname === pathname;
+
   return (
     <nav className="navbar">
       <ul>
         <li>
           <div className="nav-link" onClick={() => navigate("/")}>
-            {location.pathname === "/" ? (
+            {isActiveRoute("/") ? (
               <AiFillHome className="nav-item" title="Home" size={24} />
             ) : (
               <AiOutlineHome className="nav-item" title="Home" size={24} />
@@ -29,7 +27,7 @@ const Navbar = () => {
         </li>
         <li>
           <div className="nav-link" onClick={() => navigate("/explore")}>
-            {location.pathname === "/explore" ? (
+            {isActiveRoute("/explore") ? (
               <MdExplore className="nav-item" title="Explore" size={24} />
             ) : (
               <MdOutlineExplore
@@ -42,29 +40,37 @@ const Navbar = () => {
         </li>
         <li>
           <div className="nav-link" onClick={() => navigate("/bookmarks")}>
-            {location.pathname === "/bookmarks" ? (
-              <BsBookmarkFill
+            {isActiveRoute("/bookmarks") ? (
+              <BsBookmarksFill
                 className="nav-item"
                 title="Bookmarks"
                 size={24}
               />
             ) : (
-              <BsBookmark className="nav-item" title="Bookmarks" size={24} />
+              <BsBookmarks className="nav-item" title="Bookmarks" size={24} />
             )}
           </div>
         </li>
         <li>
           <div className="nav-link" onClick={() => navigate("/liked-posts")}>
-            {location.pathname === "/liked-posts" ? (
-              <FaHeart className="nav-item" title="Liked Posts" size={24} />
+            {isActiveRoute("/liked-posts") ? (
+              <RiHeartsFill
+                className="nav-item"
+                title="Liked Posts"
+                size={24}
+              />
             ) : (
-              <FaRegHeart className="nav-item" title="Liked Posts" size={24} />
+              <RiHeartsLine
+                className="nav-item"
+                title="Liked Posts"
+                size={24}
+              />
             )}
           </div>
         </li>
         <li>
           <div className="nav-link" onClick={() => navigate("/user-profile")}>
-            {location.pathname === "/user-profile" ? (
+            {isActiveRoute("/user-profile") ? (
               <FaUserCircle className="nav-item" title="Profile" size={24} />
             ) : (
               <FaRegUserCircle className="nav-item" title="Profile" size={24} />
