@@ -1,0 +1,20 @@
+.header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem;
+  width: 100%;
+  position: relative;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  justify-content: space-between;
+  align-items: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--primary-color);
+}
