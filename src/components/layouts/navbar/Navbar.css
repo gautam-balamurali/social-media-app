@@ -1,0 +1,34 @@
+.navbar {
+  display: flex;
+  padding: 1rem;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: var(--primary-color);
+  font-weight: 500;
+  position: sticky;
+  z-index: 2000;
+  background-color: var(--secondary-color);
+  align-items: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.nav-item {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    display: none;
+  }
+}
