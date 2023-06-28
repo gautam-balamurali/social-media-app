@@ -7,7 +7,9 @@ import HomeFeedPage from "pages/home-feed-page/HomeFeedPage";
 import ExploreFeedPage from "pages/explore-feed-page/ExploreFeedPage";
 import BookmarkedPostsPage from "pages/bookmarked-posts-page/BookmarkedPostsPage";
 import LikedPostsPage from "pages/liked-posts-page/LikedPostsPage";
+import PageNotFound from "pages/page-not-found/PageNotFound";
 import { AuthGuard } from "core/auth-guard/AuthGuard";
+import UserProfilePage from "pages/user-profile-page/UserProfilePage";
 
 const AppRoutes = () => {
   const protectedRoutes = [
@@ -27,12 +29,17 @@ const AppRoutes = () => {
       path: "/liked-posts",
       component: LikedPostsPage,
     },
+    {
+      path: "/user-profile",
+      component: UserProfilePage,
+    },
   ];
 
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/sign-up" element={<SignupPage />} />
+      <Route path="*" element={<PageNotFound />} />
       {protectedRoutes.map(({ path, component: Component }) => (
         <Route
           key={path}
