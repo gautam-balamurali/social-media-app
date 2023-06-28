@@ -65,6 +65,7 @@
 
 .pswd-section {
   padding-bottom: 1rem;
+  position: relative;
 }
 
 .signup-btn {
@@ -96,7 +97,7 @@
   font-weight: bold;
 }
 
-.eye-icon {
+.signup-eye-icon {
   position: absolute;
   top: 50%;
   right: 4%;
@@ -280,12 +281,11 @@
 }
 
 @media (min-width: 1024px) {
-    .signup-card {
-      min-width: 30rem;
-    }
-
-    .name-inpt-section{
-      flex-direction: column;
-    }
+  .signup-card {
+    min-width: 30rem;
   }
-  
+
+  .name-inpt-section {
+    flex-direction: column;
+  }
+}
