@@ -16,7 +16,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="ss-view navbar">
+    <nav className="navbar">
       <ul>
         <li>
           <div className="nav-link" onClick={() => navigate("/")}>
@@ -30,7 +30,7 @@ const Navbar = () => {
         <li>
           <div className="nav-link" onClick={() => navigate("/explore")}>
             {location.pathname === "/explore" ? (
-              <MdExplore className="nav-item" title="Home" size={24} />
+              <MdExplore className="nav-item" title="Explore" size={24} />
             ) : (
               <MdOutlineExplore
                 className="nav-item"
@@ -43,7 +43,11 @@ const Navbar = () => {
         <li>
           <div className="nav-link" onClick={() => navigate("/bookmarks")}>
             {location.pathname === "/bookmarks" ? (
-              <BsBookmarkFill className="nav-item" title="Home" size={24} />
+              <BsBookmarkFill
+                className="nav-item"
+                title="Bookmarks"
+                size={24}
+              />
             ) : (
               <BsBookmark className="nav-item" title="Bookmarks" size={24} />
             )}
@@ -54,14 +58,14 @@ const Navbar = () => {
             {location.pathname === "/liked-posts" ? (
               <FaHeart className="nav-item" title="Liked Posts" size={24} />
             ) : (
-              <FaRegHeart className="nav-item" title="Home" size={24} />
+              <FaRegHeart className="nav-item" title="Liked Posts" size={24} />
             )}
           </div>
         </li>
         <li>
           <div className="nav-link" onClick={() => navigate("/user-profile")}>
             {location.pathname === "/user-profile" ? (
-              <FaUserCircle className="nav-item" title="Home" size={24} />
+              <FaUserCircle className="nav-item" title="Profile" size={24} />
             ) : (
               <FaRegUserCircle className="nav-item" title="Profile" size={24} />
             )}
