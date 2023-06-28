@@ -1,0 +1,64 @@
+.sidebar {
+  display: none;
+}
+
+.sidebar-navigation ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.sidebar-navigation li {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.sidebar-navigation .active {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.nav-link {
+  display: flex;
+  align-self: center;
+}
+
+.current-user-details {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--light-shade-color);
+  font-size: 0.8rem;
+  padding: 1rem;
+}
+
+.current-user-avatar {
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+}
+
+.current-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-user-info h4 {
+  color: var(--dark-shade-color);
+  letter-spacing: 0.05em;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
