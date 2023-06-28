@@ -3,27 +3,41 @@ import {
   BsBookmarkFill,
   BsDot,
   BsHeart,
+  BsHeartFill,
   BsShare,
   BsThreeDots,
   BsThreeDotsVertical,
 } from "react-icons/bs";
 import { FaEdit, FaRegCommentAlt, FaTrash } from "react-icons/fa";
 import { useState } from "react";
+import OutsideClickHandler from "react-outside-click-handler";
 
 import { formatDate } from "utils/date-formatter/dateFormat";
 import "./FeedPostCard.css";
-import OutsideClickHandler from "react-outside-click-handler";
 import Button from "../button-component/Button";
 import { usePosts } from "core/contexts/posts-context/PostsContext";
+import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
 
 const FeedPostCard = ({ post }) => {
   const { _id, content, likes, username, updatedAt, comments } = post;
 
   const [showPostConfigMenu, setShowPostConfigMenu] = useState(false);
 
-  const { bookmarks, addPostToBookmarks, removePostFromBookmarks } = usePosts();
+  const {
+    bookmarks,
+    addPostToBookmarks,
+    removePostFromBookmarks,
+    likePost,
+    dislikePost,
+  } = usePosts();
+
+  const { user: currentUser } = useAuthentication();
 
   const isBookmarked = (postId) => bookmarks.includes(postId);
+  const isLiked = () =>
+    likes.likedBy.find(
+      (likedByUser) => likedByUser.username === currentUser.username
+    );
 
   const addLineBreaks = (text) => {
     const sentences = text.split(".");
@@ -115,11 +129,17 @@ const FeedPostCard = ({ post }) => {
             label={
               <>
                 <span className="btn-icon">
-                  <BsHeart size={18} />
+                  {isLiked() ? (
+                    <BsHeartFill size={18} />
+                  ) : (
+                    <BsHeart size={18} />
+                  )}
                 </span>
                 <span className="icon-count">{likes?.likeCount}</span>
               </>
             }
+            clickHandlerFunction={isLiked() ? dislikePost : likePost}
+            params={_id}
           />
           <Button
             label={

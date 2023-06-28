@@ -9,6 +9,10 @@ import {
   getBookmarkPostsService,
   removeFromBookmarkService,
 } from "core/services/bookmark-service/bookmark.service";
+import {
+  dislikePostService,
+  likePostService,
+} from "core/services/like-dislike-posts-service/likeDislikePosts.service";
 
 export const PostsContext = createContext();
 
@@ -97,6 +101,36 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  const likePost = async (postId) => {
+    try {
+      const response = await likePostService(postId, token);
+      console.log({ response }, "likePostResponse");
+      if (response.status === 200 || response.status === 201) {
+        postsDispatch({
+          type: "LIKE_POST",
+          payload: response?.data?.posts,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const dislikePost = async (postId) => {
+    try {
+      const response = await dislikePostService(postId, token);
+      console.log({ response }, "dislikePostResponse");
+      if (response.status === 200 || response.status === 201) {
+        postsDispatch({
+          type: "DISLIKE_POST",
+          payload: response?.data?.posts,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     if (token) {
       postsDispatch({ type: "LOADER_INITIATED" });
@@ -114,6 +148,8 @@ export const PostsProvider = ({ children }) => {
         appliedFilterPosts,
         addPostToBookmarks,
         removePostFromBookmarks,
+        likePost,
+        dislikePost,
       }}
     >
       {children}
