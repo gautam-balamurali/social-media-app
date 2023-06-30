@@ -27,8 +27,8 @@
 
 .user-avatar {
   border-radius: 50%;
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 2.5rem;
+  height: 2.5rem;
   object-fit: cover;
 }
 
@@ -99,5 +99,6 @@
 @media (min-width: 768px) {
   .post-basic-info {
     flex-direction: row;
+    align-items: center;
   }
 }
