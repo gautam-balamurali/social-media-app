@@ -6,6 +6,7 @@ import Footer from "../footer/Footer";
 import "./AppLayout.css";
 import Navbar from "../navbar/Navbar";
 import Sidebar from "../sidebar/Sidebar";
+import SecondSidebar from "../second-sidebar/SecondSidebar";
 
 const AppLayout = () => {
   const location = useLocation();
@@ -21,9 +22,10 @@ const AppLayout = () => {
         <div className="scrollable">
           <AppRoutes />
         </div>
+        <SecondSidebar />
       </section>
       <Footer />
-      <Navbar />
+      {!onAuthenticationPage() && <Navbar />}
     </div>
   );
 };

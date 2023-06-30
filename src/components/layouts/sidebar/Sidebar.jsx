@@ -30,7 +30,7 @@ const Sidebar = () => {
                 <AiOutlineHome className="nav-item" title="Home" size={24} />
               )}
             </div>
-            <p>Home</p>
+            <p className="ls-view">Home</p>
           </li>
           <li
             className={isActiveRoute("/explore") ? "active" : ""}
@@ -47,7 +47,7 @@ const Sidebar = () => {
                 />
               )}
             </div>
-            <p>Explore</p>
+            <p className="ls-view">Explore</p>
           </li>
           <li
             className={isActiveRoute("/bookmarks") ? "active" : ""}
@@ -60,7 +60,7 @@ const Sidebar = () => {
                 <BsBookmarks className="nav-item" title="Bookmarks" size={24} />
               )}
             </div>
-            <p>Bookmarks</p>
+            <p className="ls-view">Bookmarks</p>
           </li>
           <li
             className={isActiveRoute("/liked-posts") ? "active" : ""}
@@ -77,7 +77,7 @@ const Sidebar = () => {
                 <RiHeartsLine className="nav-item" title="Home" size={24} />
               )}
             </div>
-            <p>Liked Posts</p>
+            <p className="ls-view">Liked Posts</p>
           </li>
           <li
             className={isActiveRoute("/user-profile") ? "active" : ""}
@@ -94,7 +94,7 @@ const Sidebar = () => {
                 />
               )}
             </div>
-            <p>Profile</p>
+            <p className="ls-view">Profile</p>
           </li>
         </ul>
       </nav>
