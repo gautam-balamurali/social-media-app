@@ -1,0 +1,140 @@
+.users-follow-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 1rem;
+  border-radius: 5px;
+  position: relative;
+}
+
+.users-follow-bar-section {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  overflow-x: scroll;
+}
+
+.users-follow-bar-section::-webkit-scrollbar {
+  height: 4px;
+}
+
+.suggested-users-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  width: 12rem;
+  min-width: 12rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border-radius: 20px;
+}
+
+.suggested-users-section button {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 0.2rem;
+  border-radius: 8px;
+  font-size: 0.5rem;
+}
+
+.suggested-user-details {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--light-shade-color);
+  font-size: 0.8rem;
+  padding: 1rem;
+  flex: 1;
+}
+
+.suggested-user-avatar {
+  border-radius: 50%;
+  width: 2.8rem;
+  height: 2.8rem;
+  object-fit: cover;
+}
+
+.suggested-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggested-user-info h4 {
+  color: var(--dark-shade-color);
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+}
+
+.btn-txt {
+  font-size: 0.9rem;
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  height: 2rem;
+}
+
+.carousel-button.left {
+  left: 0;
+}
+
+.carousel-button.right {
+  right: 0;
+}
+
+@media (min-width: 768px) {
+  .btn-icon,
+  .btn-txt {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .users-follow-bar-container {
+    gap: 0.5rem;
+    height: 18rem;
+    width: 23rem;
+  }
+
+  .users-follow-bar-section {
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+    overflow-y: scroll;
+  }
+
+  .users-follow-bar-section::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .suggested-users-section {
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: none;
+    width: 20rem;
+    padding: 0;
+  }
+
+  .carousel-button {
+    display: none;
+  }
+}
