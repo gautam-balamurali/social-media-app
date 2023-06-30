@@ -19,8 +19,8 @@ const Login = () => {
   const { token, loginUser } = useAuthentication();
 
   const guestLoginCredentials = {
-    username: "adarshbalika",
-    password: "adarshBalika123",
+    username: "gautam.bm",
+    password: "gautam123",
   };
 
   const loginCredentialsChangeHandler = (event) => {
