@@ -99,7 +99,7 @@ label {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 2px;
 }
 ::-webkit-scrollbar-track {
   background-color: var(--secondary-color);
@@ -143,8 +143,7 @@ label {
     display: none;
   }
 
-  .ms-view,
-  .ls-view {
+  .ms-view {
     display: inline-block;
   }
 }
@@ -160,5 +159,9 @@ label {
 
   p {
     font-size: 1.25rem;
+  }
+
+  .ls-view {
+    display: inline-block;
   }
 }

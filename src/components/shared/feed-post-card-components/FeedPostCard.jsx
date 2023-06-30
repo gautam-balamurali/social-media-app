@@ -17,6 +17,7 @@ import "./FeedPostCard.css";
 import Button from "../button-component/Button";
 import { usePosts } from "core/contexts/posts-context/PostsContext";
 import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
+import { useUsers } from "core/contexts/users-context/UsersContext";
 
 const FeedPostCard = ({ post }) => {
   const { _id, content, likes, username, updatedAt, comments } = post;
@@ -32,6 +33,10 @@ const FeedPostCard = ({ post }) => {
   } = usePosts();
 
   const { user: currentUser } = useAuthentication();
+
+  const { users } = useUsers();
+
+  const postOwner = users?.find((user) => user.username === username);
 
   const isBookmarked = (postId) => bookmarks.includes(postId);
   const isLiked = () =>
@@ -73,13 +78,12 @@ const FeedPostCard = ({ post }) => {
           <div className="user-details">
             <img
               className="user-avatar"
-              src={"http://bit.ly/42Zm7tM"}
+              src={postOwner.picUrl}
               alt={username}
             />
-            {/* Make post-basic-view flex row in ms-view and make ms-view inline-block */}
             <div className="post-basic-info">
               <p className="user-info">
-                Posted by <span>@{username}</span>
+                posted by <span>@{username}</span>
               </p>
               <BsDot className="ms-view" size={18} />
               <p>{formatDate(updatedAt)}</p>

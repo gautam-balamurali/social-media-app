@@ -4,3 +4,9 @@
   gap: 1rem;
   padding: 2rem 1rem 1rem 1rem;
 }
+
+@media (min-width: 1024px) {
+  .home-feed-users-follow-bar {
+    display: none;
+  }
+}
