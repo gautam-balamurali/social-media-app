@@ -6,10 +6,12 @@ import { FaRegUserCircle, FaUserCircle } from "react-icons/fa";
 import { RiHeartsLine, RiHeartsFill } from "react-icons/ri";
 
 import "./Navbar.css";
+import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
 
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { user } = useAuthentication();
 
   const isActiveRoute = (pathname) => location.pathname === pathname;
 
@@ -69,8 +71,11 @@ const Navbar = () => {
           </div>
         </li>
         <li>
-          <div className="nav-link" onClick={() => navigate("/user-profile")}>
-            {isActiveRoute("/user-profile") ? (
+          <div
+            className="nav-link"
+            onClick={() => navigate(`/profile/${user?.username}`)}
+          >
+            {isActiveRoute(`/profile/${user?.username}`) ? (
               <FaUserCircle className="nav-item" title="Profile" size={24} />
             ) : (
               <FaRegUserCircle className="nav-item" title="Profile" size={24} />
