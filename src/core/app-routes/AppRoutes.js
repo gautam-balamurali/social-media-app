@@ -30,7 +30,7 @@ const AppRoutes = () => {
       component: LikedPostsPage,
     },
     {
-      path: "/user-profile",
+      path: "/profile/:username",
       component: UserProfilePage,
     },
   ];

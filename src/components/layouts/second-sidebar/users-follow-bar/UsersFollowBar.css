@@ -51,6 +51,7 @@
   font-size: 0.8rem;
   padding: 1rem;
   flex: 1;
+  cursor: pointer;
 }
 
 .suggested-user-avatar {

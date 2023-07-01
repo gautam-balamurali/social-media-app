@@ -1,10 +1,11 @@
 import { FaChevronLeft, FaChevronRight, FaPlus } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
 
 import { useUsers } from "core/contexts/users-context/UsersContext";
 import Button from "components/shared/button-component/Button";
-import "./UsersFollowBar.css";
-import { useRef, useState } from "react";
 import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
+import "./UsersFollowBar.css";
 
 const UsersFollowBar = () => {
   const { users } = useUsers();
@@ -15,6 +16,8 @@ const UsersFollowBar = () => {
 
   const containerRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
+
+  const navigate = useNavigate();
 
   const scrollLeft = () => {
     if (containerRef.current) {
@@ -51,7 +54,10 @@ const UsersFollowBar = () => {
       <div className="users-follow-bar-section" ref={containerRef}>
         {suggestedUsersToFollow.map((user) => (
           <div key={user.username} className="suggested-users-section">
-            <div className="suggested-user-details">
+            <div
+              onClick={() => navigate(`/profile/${user?.username}`)}
+              className="suggested-user-details"
+            >
               <img
                 className="suggested-user-avatar"
                 src={user?.picUrl}
