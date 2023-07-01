@@ -100,7 +100,7 @@ export const posts = [
         },
         {
           _id: "e29082cc-d57b-4f3d-a863-0e2dc4ed02ba",
-          firstName: "Shubum",
+          firstName: "Shubhi",
           lastName: "K",
           username: "sasta_arjit",
           password: "shubumK123",

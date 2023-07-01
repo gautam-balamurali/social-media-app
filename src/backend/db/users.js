@@ -18,6 +18,9 @@ export const users = [
     bookmarks: [],
     followers: [],
     following: [],
+    bio: "Owns Sochenge",
+    websiteUrl: "https://gautam-balamurali.netlify.app",
+    websiteName: "gautam-bm.com",
   },
   {
     _id: "afadbcf4-ea27-4e30-a058-acaf101a9f7c",
@@ -32,6 +35,9 @@ export const users = [
     bookmarks: [],
     followers: [],
     following: [],
+    bio: "This is my bio.",
+    websiteUrl: "https://www.google.com",
+    websiteName: "gautam-bm.com",
   },
   {
     _id: "bc5cfc5b-62dc-43e3-aac1-d920066e7427",
@@ -46,6 +52,9 @@ export const users = [
     bookmarks: [],
     followers: [],
     following: [],
+    bio: "This is my bio.",
+    websiteUrl: "https://www.google.com",
+    websiteName: "gautam-bm.com",
   },
   {
     _id: "55a7e27f-1ed9-434b-87e4-2e0b308c4b16",
@@ -60,6 +69,9 @@ export const users = [
     bookmarks: [],
     followers: [],
     following: [],
+    bio: "This is my bio.",
+    websiteUrl: "https://www.google.com",
+    websiteName: "gautam-bm.com",
   },
   {
     _id: "9d2f44ab-96fc-4744-b83d-e7cbc3be21b5",
@@ -74,10 +86,13 @@ export const users = [
     bookmarks: [],
     followers: [],
     following: [],
+    bio: "This is my bio.",
+    websiteUrl: "https://www.google.com",
+    websiteName: "gautam-bm.com",
   },
   {
     _id: "e29082cc-d57b-4f3d-a863-0e2dc4ed02ba",
-    firstName: "Shubum",
+    firstName: "Shubhi",
     lastName: "K",
     username: "sasta_arjit",
     password: "shubumK123",
@@ -88,6 +103,9 @@ export const users = [
     bookmarks: [],
     followers: [],
     following: [],
+    bio: "This is my bio.",
+    websiteUrl: "https://www.google.com",
+    websiteName: "gautam-bm.com",
   },
   {
     _id: "09ab1282-7e8b-4658-b2be-326504d10f68",
@@ -102,5 +120,8 @@ export const users = [
     bookmarks: [],
     followers: [],
     following: [],
+    bio: "This is my bio.",
+    websiteUrl: "https://www.google.com",
+    websiteName: "gautam-bm.com",
   },
 ];
