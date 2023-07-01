@@ -16,15 +16,20 @@ const AppLayout = () => {
 
   return (
     <div className="app-layout">
-      {!onAuthenticationPage() && <Header />}
-      <section className="section grid-layout">
-        <Sidebar />
-        <div className="scrollable">
+      <Header />
+      {!onAuthenticationPage() && (
+        <section className="section grid-layout">
+          {<Sidebar />}
           <AppRoutes />
-        </div>
-        <SecondSidebar />
-      </section>
-      <Footer />
+          {<SecondSidebar />}
+        </section>
+      )}
+      {onAuthenticationPage() && (
+        <section className="section">
+          <AppRoutes />
+        </section>
+      )}
+      {onAuthenticationPage() && <Footer />}
       {!onAuthenticationPage() && <Navbar />}
     </div>
   );

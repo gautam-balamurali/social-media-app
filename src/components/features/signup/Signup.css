@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  padding: 2rem;
 }
 
 .signup-card {
@@ -16,13 +16,19 @@
 .signup-content {
   text-align: center;
   padding-bottom: 0.5rem;
+  width: 100%;
 }
 
 .name-inpt-section {
   display: flex;
   justify-content: space-between;
-  gap: 0.2rem;
+  gap: 1rem;
   padding-top: 1rem;
+}
+
+.firstName-section,
+.lastName-section {
+  flex: 1;
 }
 
 .email-section label,
@@ -48,10 +54,12 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-  padding: 1rem;
+  padding: 0.8rem;
   width: 100%;
   word-spacing: 2px;
-  letter-spacing: 2px;
+  letter-spacing: 0.2em;
+  display: flex;
+  align-items: center;
 }
 
 .email-section,
@@ -283,9 +291,5 @@
 @media (min-width: 1024px) {
   .signup-card {
     min-width: 30rem;
-  }
-
-  .name-inpt-section {
-    flex-direction: column;
   }
 }

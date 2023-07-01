@@ -80,11 +80,13 @@ const Sidebar = () => {
             <p className="ls-view">Liked Posts</p>
           </li>
           <li
-            className={isActiveRoute("/user-profile") ? "active" : ""}
-            onClick={() => navigate("/user-profile")}
+            className={
+              isActiveRoute(`/profile/${user?.username}`) ? "active" : ""
+            }
+            onClick={() => navigate(`/profile/${user?.username}`)}
           >
             <div className="nav-link">
-              {isActiveRoute("/user-profile") ? (
+              {isActiveRoute(`/profile/${user?.username}`) ? (
                 <FaUserCircle className="nav-item" title="Home" size={24} />
               ) : (
                 <FaRegUserCircle

@@ -1,11 +1,9 @@
 import { usePosts } from "core/contexts/posts-context/PostsContext";
-import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
 import FeedPostCard from "components/shared/feed-post-card-components/FeedPostCard";
 import "./LikedPosts.css";
 
-const LikedPosts = () => {
+const LikedPosts = ({currentUser}) => {
   const { posts, appliedFilterPosts, isLoading } = usePosts();
-  const { user: currentUser } = useAuthentication();
 
   const isLiked = (likedByUsersList) =>
     likedByUsersList.find(
