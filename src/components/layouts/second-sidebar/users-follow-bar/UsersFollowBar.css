@@ -8,6 +8,11 @@
   position: relative;
 }
 
+.users-follow-bar-container h3 {
+  text-transform: capitalize;
+  letter-spacing: 0.1em;
+}
+
 .users-follow-bar-section {
   display: flex;
   gap: 0.5rem;
@@ -100,6 +105,14 @@
 
 .carousel-button.right {
   right: 0;
+}
+
+.no-follows-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
 
 @media (min-width: 768px) {
