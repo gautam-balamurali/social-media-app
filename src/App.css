@@ -53,6 +53,10 @@ p {
 }
 
 .section {
+  min-height: calc(100vh - 4rem);
+}
+
+.section-auth {
   min-height: calc(100vh - 4rem - 4rem);
 }
 

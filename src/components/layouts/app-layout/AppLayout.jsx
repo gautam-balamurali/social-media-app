@@ -25,7 +25,7 @@ const AppLayout = () => {
         </section>
       )}
       {onAuthenticationPage() && (
-        <section className="section">
+        <section className="section-auth">
           <AppRoutes />
         </section>
       )}

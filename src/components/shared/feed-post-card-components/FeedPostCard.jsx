@@ -85,8 +85,10 @@ const FeedPostCard = ({ post }) => {
               <p className="user-info">
                 posted by <span>@{username}</span>
               </p>
-              <BsDot className="ms-view" size={18} />
-              <p>{formatDate(updatedAt)}</p>
+              <span>
+                <BsDot className="ms-view" size={18} />
+              </span>
+              <span>{formatDate(updatedAt)}</span>
             </div>
           </div>
           <div className="post-configs">
@@ -129,53 +131,55 @@ const FeedPostCard = ({ post }) => {
         <p className="post-desc">{addLineBreaks(content)}</p>
         <hr className="separator" />
         <div className="action-btns">
-          <Button
-            label={
-              <>
-                <span className="btn-icon">
-                  {isLiked() ? (
-                    <BsHeartFill size={18} />
+          <div className="action-btns-post">
+            <Button
+              label={
+                <>
+                  <span className="btn-icon">
+                    {isLiked() ? (
+                      <BsHeartFill size={18} />
+                    ) : (
+                      <BsHeart size={18} />
+                    )}
+                  </span>
+                  <span className="icon-count">{likes?.likeCount}</span>
+                </>
+              }
+              clickHandlerFunction={isLiked() ? dislikePost : likePost}
+              params={_id}
+            />
+            <Button
+              label={
+                <>
+                  <span className="btn-icon">
+                    <FaRegCommentAlt size={18} />
+                  </span>
+                  <span className="icon-count">{comments.length}</span>
+                </>
+              }
+            />
+            <Button
+              label={
+                <>
+                  {isBookmarked(_id) ? (
+                    <BsBookmarkFill size={18} />
                   ) : (
-                    <BsHeart size={18} />
+                    <BsBookmark size={18} />
                   )}
-                </span>
-                <span className="icon-count">{likes?.likeCount}</span>
-              </>
-            }
-            clickHandlerFunction={isLiked() ? dislikePost : likePost}
-            params={_id}
-          />
-          <Button
-            label={
-              <>
-                <span className="btn-icon">
-                  <FaRegCommentAlt size={18} />
-                </span>
-                <span className="icon-count">{comments.length}</span>
-              </>
-            }
-          />
+                </>
+              }
+              clickHandlerFunction={
+                isBookmarked(_id) ? removePostFromBookmarks : addPostToBookmarks
+              }
+              params={_id}
+            />
+          </div>
           <Button
             label={
               <>
                 <BsShare size={18} />
               </>
             }
-          />
-          <Button
-            label={
-              <>
-                {isBookmarked(_id) ? (
-                  <BsBookmarkFill size={18} />
-                ) : (
-                  <BsBookmark size={18} />
-                )}
-              </>
-            }
-            clickHandlerFunction={
-              isBookmarked(_id) ? removePostFromBookmarks : addPostToBookmarks
-            }
-            params={_id}
           />
         </div>
       </div>

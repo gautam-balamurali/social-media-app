@@ -41,8 +41,6 @@ const UsersFollowBar = () => {
     }
   };
 
-  if (suggestedUsersToFollow.length < 1) return null;
-
   return (
     <div className="users-follow-bar-container">
       <h3>Suggested follows</h3>
@@ -52,34 +50,40 @@ const UsersFollowBar = () => {
         </button>
       )}
       <div className="users-follow-bar-section" ref={containerRef}>
-        {suggestedUsersToFollow.map((user) => (
-          <div key={user.username} className="suggested-users-section">
-            <div
-              onClick={() => navigate(`/profile/${user?.username}`)}
-              className="suggested-user-details"
-            >
-              <img
-                className="suggested-user-avatar"
-                src={user?.picUrl}
-                alt={user?.username}
-              />
-              <div className="suggested-user-info">
-                <h4>{`${user?.firstName} ${user?.lastName}`}</h4>
-                <span>@{user?.username}</span>
+        {suggestedUsersToFollow?.length > 0 &&
+          suggestedUsersToFollow.map((user) => (
+            <div key={user.username} className="suggested-users-section">
+              <div
+                onClick={() => navigate(`/profile/${user?.username}`)}
+                className="suggested-user-details"
+              >
+                <img
+                  className="suggested-user-avatar"
+                  src={user?.picUrl}
+                  alt={user?.username}
+                />
+                <div className="suggested-user-info">
+                  <h4>{`${user?.firstName} ${user?.lastName}`}</h4>
+                  <span>@{user?.username}</span>
+                </div>
               </div>
+              <Button
+                label={
+                  <>
+                    <span className="btn-icon">
+                      <FaPlus />
+                    </span>
+                    <span className="btn-txt">Follow</span>
+                  </>
+                }
+              />
             </div>
-            <Button
-              label={
-                <>
-                  <span className="btn-icon">
-                    <FaPlus />
-                  </span>
-                  <span className="btn-txt">Follow</span>
-                </>
-              }
-            />
+          ))}
+        {suggestedUsersToFollow?.length < 1 && (
+          <div className="no-follows-found">
+            <h4>None. You are following everyone!💁🏼</h4>
           </div>
-        ))}
+        )}
       </div>
       {scrollPosition < suggestedUsersToFollow.length - 1 && (
         <button className="carousel-button right" onClick={scrollRight}>
