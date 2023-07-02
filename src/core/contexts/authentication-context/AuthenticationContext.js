@@ -63,7 +63,13 @@ export const AuthenticationProvider = ({ children }) => {
 
   return (
     <AuthenticationContext.Provider
-      value={{ ...loggedInUserDetails, loginUser, logOutUser, signUpUser }}
+      value={{
+        ...loggedInUserDetails,
+        loginUser,
+        logOutUser,
+        signUpUser,
+        syncUserDetails,
+      }}
     >
       {children}
     </AuthenticationContext.Provider>

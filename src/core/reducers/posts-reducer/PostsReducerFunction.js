@@ -21,6 +21,8 @@ export const postsReducer = (state, action) => {
       return { ...state, bookmarks: [...payload] };
     case "FETCH_ALL_BOOKMARKS":
       return { ...state, bookmarks: [...payload] };
+    case "APPLY_FILTERS":
+      return { ...state, sortFilterType: payload };
     default:
       return state;
   }

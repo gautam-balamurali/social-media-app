@@ -9,7 +9,7 @@ import {
   BsThreeDotsVertical,
 } from "react-icons/bs";
 import { FaEdit, FaRegCommentAlt, FaTrash } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
 
 import { formatDate } from "utils/date-formatter/dateFormat";
@@ -18,6 +18,7 @@ import Button from "../button-component/Button";
 import { usePosts } from "core/contexts/posts-context/PostsContext";
 import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
 import { useUsers } from "core/contexts/users-context/UsersContext";
+import { SlUserFollow, SlUserUnfollow } from "react-icons/sl";
 
 const FeedPostCard = ({ post }) => {
   const { _id, content, likes, username, updatedAt, comments } = post;
@@ -34,7 +35,7 @@ const FeedPostCard = ({ post }) => {
 
   const { user: currentUser } = useAuthentication();
 
-  const { users } = useUsers();
+  const { users, followUser, unfollowUser } = useUsers();
 
   const postOwner = users?.find((user) => user.username === username);
 
@@ -71,6 +72,15 @@ const FeedPostCard = ({ post }) => {
     }
   };
 
+  const isSignedInUserFollowingThisUser = () =>
+    currentUser?.following.find((user) => username === user?.username);
+
+  const isSignedInUser = () => currentUser?.username === username;
+
+  useEffect(() => {
+    setShowPostConfigMenu(false);
+  }, [post, postOwner]);
+
   return (
     <div className="post-container">
       <div className="post-section">
@@ -103,26 +113,62 @@ const FeedPostCard = ({ post }) => {
             {showPostConfigMenu && (
               <OutsideClickHandler onOutsideClick={handleOutsideClick}>
                 <div className="config-menu action-btns">
-                  <Button
-                    label={
-                      <>
-                        <span className="btn-icon">
-                          <FaEdit size={18} />
-                        </span>
-                        <span className="icon-count">Edit</span>
-                      </>
-                    }
-                  />
-                  <Button
-                    label={
-                      <>
-                        <span className="btn-icon">
-                          <FaTrash size={18} />
-                        </span>
-                        <span className="icon-count">Delete</span>
-                      </>
-                    }
-                  />
+                  {isSignedInUser() && (
+                    <>
+                      <Button
+                        label={
+                          <>
+                            <span className="btn-icon">
+                              <FaEdit size={18} />
+                            </span>
+                            <span className="icon-count">Edit</span>
+                          </>
+                        }
+                      />
+                      <Button
+                        label={
+                          <>
+                            <span className="btn-icon">
+                              <FaTrash size={18} />
+                            </span>
+                            <span className="icon-count">Delete</span>
+                          </>
+                        }
+                      />
+                    </>
+                  )}
+                  {!isSignedInUser() && (
+                    <>
+                      {isSignedInUserFollowingThisUser() && (
+                        <Button
+                          label={
+                            <>
+                              <span className="btn-icon">
+                                <SlUserUnfollow size={18} />
+                              </span>
+                              <span className="icon-count">Unfollow</span>
+                            </>
+                          }
+                          clickHandlerFunction={unfollowUser}
+                          params={postOwner?._id}
+                        />
+                      )}
+                      {!isSignedInUserFollowingThisUser() && (
+                        <Button
+                          label={
+                            <>
+                              <span className="btn-icon">
+                                <SlUserFollow size={18} />
+                              </span>
+                              <span className="icon-count">Follow</span>
+                            </>
+                          }
+                          clickHandlerFunction={followUser}
+                          params={postOwner?._id}
+                        />
+                      )}
+                    </>
+                  )}
                 </div>
               </OutsideClickHandler>
             )}

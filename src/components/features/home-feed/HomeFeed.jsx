@@ -3,6 +3,7 @@ import { usePosts } from "core/contexts/posts-context/PostsContext";
 import "./HomeFeed.css";
 import FeedPostCard from "components/shared/feed-post-card-components/FeedPostCard";
 import UsersFollowBar from "components/layouts/second-sidebar/users-follow-bar/UsersFollowBar";
+import FilterBar from "components/shared/filter-bar-component/FilterBar";
 
 const HomeFeed = () => {
   const { user } = useAuthentication();
@@ -22,6 +23,7 @@ const HomeFeed = () => {
       <div className="home-feed-users-follow-bar">
         <UsersFollowBar />
       </div>
+      <FilterBar />
       {filteredHomeFeedPosts?.length > 0 &&
         filteredHomeFeedPosts.map((post) => (
           <FeedPostCard key={post._id} post={post} />

@@ -94,13 +94,14 @@
   padding: 0.5rem;
 }
 
-.profile-action-btns button {
+.profile-action-default-btn {
   display: flex;
   align-items: center;
   gap: 0.2rem;
   border: none;
   background-color: var(--primary-color);
   color: var(--secondary-color);
+  border: 1px solid var(--primary-color);
   padding: 0.4rem;
   border-radius: 8px;
   font-weight: 500;
@@ -144,6 +145,7 @@
   align-items: center;
   gap: 0.3rem;
   color: var(--medium-shade-color);
+  cursor: pointer;
 }
 
 .follow-info span {
@@ -179,6 +181,18 @@
   border-bottom: 2px solid var(--primary-color);
 }
 
+.unfollow-btn {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  font-weight: 600;
+}
+
+.following-txt,
+.followers-txt {
+  cursor: pointer;
+}
+
 @media (max-width: 300px) {
   .profile-user-details {
     top: 13rem;
@@ -199,6 +213,11 @@
   .profile-banner {
     min-width: 24rem;
   }
+
+  .following-txt:hover,
+  .followers-txt:hover {
+    text-decoration: underline;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -218,5 +237,3 @@
     min-width: 120rem;
   }
 }
-
-
