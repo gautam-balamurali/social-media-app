@@ -131,13 +131,19 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  const applyFiltersClickHandler = (filterType) => {
+    postsDispatch({ type: "LOADER_INITIATED" });
+    postsDispatch({ type: "APPLY_FILTERS", payload: filterType });
+    postsDispatch({ type: "LOADER_STOPPED" });
+  };
+
   useEffect(() => {
     if (token) {
       postsDispatch({ type: "LOADER_INITIATED" });
       fetchAllPosts();
       fetchAllBookmarkedPosts();
       postsDispatch({ type: "LOADER_STOPPED" });
-    }
+    } // eslint-disable-next-line
   }, [token]);
 
   return (
@@ -150,6 +156,7 @@ export const PostsProvider = ({ children }) => {
         removePostFromBookmarks,
         likePost,
         dislikePost,
+        applyFiltersClickHandler,
       }}
     >
       {children}

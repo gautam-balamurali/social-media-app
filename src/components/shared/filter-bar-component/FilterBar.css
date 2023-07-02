@@ -1,0 +1,52 @@
+.filter-bar-container {
+  width: 100%;
+  display: flex;
+}
+
+.filter-bar-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.filter-bar-section h3 {
+  text-transform: capitalize;
+  letter-spacing: 0.2em;
+  font-size: 1rem;
+}
+
+.filter-configs {
+  position: relative;
+}
+
+.filter-btn {
+  background: transparent;
+  outline: none;
+  border: none;
+  color: var(--dark-shade-color);
+  cursor: pointer;
+}
+
+.filter-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: auto;
+  right: 0;
+  padding: 1rem;
+  background: rgba(246, 249, 251, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.2px);
+  -webkit-backdrop-filter: blur(9.2px);
+  border: 1px solid rgba(246, 249, 251, 0.25);
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .filter-btn:hover {
+    color: var(--primary-color);
+  }
+}

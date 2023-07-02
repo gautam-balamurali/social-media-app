@@ -1,6 +1,7 @@
 import { usePosts } from "core/contexts/posts-context/PostsContext";
 import FeedPostCard from "components/shared/feed-post-card-components/FeedPostCard";
 import "./BookmarkedPosts.css";
+import FilterBar from "components/shared/filter-bar-component/FilterBar";
 
 const BookmarkedPosts = () => {
   const { posts, bookmarks, appliedFilterPosts, isLoading } = usePosts();
@@ -12,10 +13,14 @@ const BookmarkedPosts = () => {
 
   return (
     <div className="posts-container">
-      {filteredBookmarkedPosts?.length > 0 &&
-        filteredBookmarkedPosts.map((post) => (
-          <FeedPostCard key={post._id} post={post} />
-        ))}
+      {filteredBookmarkedPosts?.length > 0 && (
+        <>
+          <FilterBar />
+          {filteredBookmarkedPosts.map((post) => (
+            <FeedPostCard key={post._id} post={post} />
+          ))}
+        </>
+      )}
       {filteredBookmarkedPosts?.length < 1 && !isLoading && (
         <h3>No bookmarked posts found.</h3>
       )}
