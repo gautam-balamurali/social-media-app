@@ -8,10 +8,15 @@ import { useAuthentication } from "core/contexts/authentication-context/Authenti
 import "./UsersFollowBar.css";
 
 const UsersFollowBar = () => {
-  const { users } = useUsers();
+  const { users, followUser } = useUsers();
   const { user: currentUser } = useAuthentication();
+
   const suggestedUsersToFollow = users.filter(
-    (user) => user?.username !== currentUser?.username
+    (user) =>
+      user?.username !== currentUser?.username &&
+      !currentUser?.following.find(
+        ({ username }) => username === user?.username
+      )
   );
 
   const containerRef = useRef(null);
@@ -76,6 +81,8 @@ const UsersFollowBar = () => {
                     <span className="btn-txt">Follow</span>
                   </>
                 }
+                clickHandlerFunction={followUser}
+                params={user._id}
               />
             </div>
           ))}
