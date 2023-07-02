@@ -92,9 +92,12 @@ const FeedPostCard = ({ post }) => {
               alt={username}
             />
             <div className="post-basic-info">
-              <p className="user-info">
-                posted by <span>@{username}</span>
-              </p>
+              <div className="user-name-details">
+                <h4>{`${postOwner?.firstName} ${postOwner?.lastName}`}</h4>
+                <p className="user-info">
+                  <span>@{username}</span>
+                </p>
+              </div>
               <span>
                 <BsDot className="ms-view" size={18} />
               </span>

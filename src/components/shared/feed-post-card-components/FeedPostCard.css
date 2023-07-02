@@ -38,6 +38,12 @@
   gap: 0.1rem;
 }
 
+.user-name-details h4 {
+  color: var(--dark-shade-color);
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+}
+
 .user-info {
   font-size: 0.7rem;
 }
