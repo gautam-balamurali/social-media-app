@@ -38,8 +38,14 @@
   gap: 0.1rem;
 }
 
+.user-info {
+  font-size: 0.7rem;
+}
+
 .user-info span {
   color: var(--primary-color);
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
 .post-configs {
@@ -79,12 +85,21 @@
   justify-content: space-between;
 }
 
+.action-btns-post {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 50%;
+}
+
 .action-btns button {
   border: none;
   background-color: transparent;
   display: flex;
   align-items: center;
   gap: 0.2rem;
+  outline: none;
 }
 
 .icon-count {
