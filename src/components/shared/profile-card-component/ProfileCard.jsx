@@ -4,7 +4,7 @@ import { FaUserEdit } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import { RxLink2 } from "react-icons/rx";
 import { MdVerified } from "react-icons/md";
-import { SlUserFollow } from "react-icons/sl";
+import { SlUserFollow, SlUserUnfollow } from "react-icons/sl";
 import { useState } from "react";
 
 import "./ProfileCard.css";
@@ -14,6 +14,7 @@ import ProfileSpecificPosts from "./ProfileSpecificPosts";
 import LikedPosts from "components/features/liked-posts/LikedPosts";
 import { usePosts } from "core/contexts/posts-context/PostsContext";
 import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
+import { useUsers } from "core/contexts/users-context/UsersContext";
 
 const ProfileCard = ({ userDetails }) => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const ProfileCard = ({ userDetails }) => {
   );
   const { posts } = usePosts();
   const { user: currentUser } = useAuthentication();
+  const { followUser, unfollowUser } = useUsers();
 
   const postsCount = posts?.filter(
     (post) => userDetails?.username === post?.username
@@ -31,6 +33,11 @@ const ProfileCard = ({ userDetails }) => {
 
   const isUserVerified = () =>
     isSignedInUser() || userDetails?.username === "gautam.bm";
+
+  const isSignedInUserFollowingThisUser = () =>
+    currentUser?.following.find(
+      ({ username }) => username === userDetails?.username
+    );
 
   return (
     <div className="user-profile-section">
@@ -84,6 +91,7 @@ const ProfileCard = ({ userDetails }) => {
                   <span className="profile-action-btn-txt">Edit</span>
                 </>
               }
+              className={"profile-action-default-btn"}
             />
             <Button
               label={
@@ -94,21 +102,42 @@ const ProfileCard = ({ userDetails }) => {
                   <span className="profile-action-btn-txt">Logout</span>
                 </>
               }
+              className={"profile-action-default-btn"}
             />
           </>
         )}
         {!isSignedInUser() && (
           <>
-            <Button
-              label={
-                <>
-                  <span className="profile-action-btn-icon">
-                    <SlUserFollow size={18} />
-                  </span>
-                  <span className="profile-action-btn-txt">Follow</span>
-                </>
-              }
-            />
+            {isSignedInUserFollowingThisUser() && (
+              <Button
+                label={
+                  <>
+                    <span className="profile-action-btn-icon">
+                      <SlUserUnfollow size={18} />
+                    </span>
+                    <span className="profile-action-btn-txt">Unfollow</span>
+                  </>
+                }
+                clickHandlerFunction={unfollowUser}
+                params={userDetails?._id}
+                className={"profile-action-default-btn unfollow-btn"}
+              />
+            )}
+            {!isSignedInUserFollowingThisUser() && (
+              <Button
+                label={
+                  <>
+                    <span className="profile-action-btn-icon">
+                      <SlUserFollow size={18} />
+                    </span>
+                    <span className="profile-action-btn-txt">Follow</span>
+                  </>
+                }
+                clickHandlerFunction={followUser}
+                params={userDetails?._id}
+                className={"profile-action-default-btn"}
+              />
+            )}
           </>
         )}
       </div>
@@ -127,11 +156,11 @@ const ProfileCard = ({ userDetails }) => {
         <div className="follow-info-section">
           <div className="follow-info">
             <span>{userDetails?.following.length}</span>
-            <p>Following</p>
+            <p className="following-txt">Following</p>
           </div>
           <div className="follow-info">
             <span>{userDetails?.followers.length}</span>
-            <p>Followers</p>
+            <p className="followers-txt">Followers</p>
           </div>
         </div>
       </div>
