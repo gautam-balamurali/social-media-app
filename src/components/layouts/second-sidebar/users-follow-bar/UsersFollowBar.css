@@ -125,7 +125,8 @@
 @media (min-width: 1024px) {
   .users-follow-bar-container {
     gap: 0.5rem;
-    height: 18rem;
+    height: auto;
+    max-height: 23rem;
     width: 23rem;
   }
 
@@ -133,7 +134,7 @@
     flex-direction: column;
     padding: 0;
     gap: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   .users-follow-bar-section::-webkit-scrollbar {
