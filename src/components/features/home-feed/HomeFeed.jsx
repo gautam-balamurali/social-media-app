@@ -4,6 +4,7 @@ import "./HomeFeed.css";
 import FeedPostCard from "components/shared/feed-post-card-components/FeedPostCard";
 import UsersFollowBar from "components/layouts/second-sidebar/users-follow-bar/UsersFollowBar";
 import FilterBar from "components/shared/filter-bar-component/FilterBar";
+import CreatePost from "components/shared/feed-post-card-components/create-post/CreatePost";
 
 const HomeFeed = () => {
   const { user } = useAuthentication();
@@ -20,6 +21,7 @@ const HomeFeed = () => {
 
   return (
     <div className="posts-container">
+      <CreatePost />
       <div className="home-feed-users-follow-bar">
         <UsersFollowBar />
       </div>
