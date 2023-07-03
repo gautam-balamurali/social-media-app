@@ -19,6 +19,7 @@ import { usePosts } from "core/contexts/posts-context/PostsContext";
 import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
 import { useUsers } from "core/contexts/users-context/UsersContext";
 import { SlUserFollow, SlUserUnfollow } from "react-icons/sl";
+import { useNavigate } from "react-router-dom";
 
 const FeedPostCard = ({ post }) => {
   const { _id, content, likes, username, updatedAt, comments } = post;
@@ -77,6 +78,8 @@ const FeedPostCard = ({ post }) => {
 
   const isSignedInUser = () => currentUser?.username === username;
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     setShowPostConfigMenu(false);
   }, [post, postOwner]);
@@ -90,9 +93,13 @@ const FeedPostCard = ({ post }) => {
               className="user-avatar"
               src={postOwner.picUrl}
               alt={username}
+              onClick={() => navigate(`/profile/${username}`)}
             />
             <div className="post-basic-info">
-              <div className="user-name-details">
+              <div
+                className="user-name-details"
+                onClick={() => navigate(`/profile/${username}`)}
+              >
                 <h4>{`${postOwner?.firstName} ${postOwner?.lastName}`}</h4>
                 <p className="user-info">
                   <span>@{username}</span>
