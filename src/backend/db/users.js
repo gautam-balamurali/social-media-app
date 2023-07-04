@@ -11,7 +11,7 @@ export const users = [
     lastName: "Bm",
     username: "gautam.bm",
     password: "gautam123",
-    picUrl: "http://bit.ly/42Zm7tM",
+    picUrl: "https://github.com/gautam-balamurali.png",
     bgUrl: "https://picsum.photos/224/320?random=1",
     createdAt: formatDate(),
     updatedAt: formatDate(),
