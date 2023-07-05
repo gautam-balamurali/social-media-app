@@ -20,6 +20,7 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [],
+    mediaUrl: "",
   },
   {
     _id: uuid(),
@@ -34,6 +35,7 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [],
+    mediaUrl: "",
   },
   {
     _id: uuid(),
@@ -133,5 +135,6 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [],
+    mediaUrl: "",
   },
 ];
