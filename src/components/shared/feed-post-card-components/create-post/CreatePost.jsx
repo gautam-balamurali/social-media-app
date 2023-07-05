@@ -1,19 +1,23 @@
-import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
-import "./CreatePost.css";
+import { AiOutlineGif } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 import { FaPhotoVideo } from "react-icons/fa";
 import { MdInsertEmoticon } from "react-icons/md";
+
+import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
+import "./CreatePost.css";
 import Button from "components/shared/button-component/Button";
-import { AiOutlineGif } from "react-icons/ai";
 
 const CreatePost = () => {
   const { user } = useAuthentication();
+  const navigate = useNavigate();
 
   return (
     <div className="create-post-grid">
       <img
-        className="user-profile-pic"
+        className="user-profile-pic cursor-pointer"
         src={user?.picUrl}
         alt={user?.username}
+        onClick={() => navigate(`/profile/${user?.username}`)}
       />
       <div className="create-post-container">
         <div className="create-post-contents">

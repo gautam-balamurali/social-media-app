@@ -79,6 +79,13 @@
   letter-spacing: 0.1em;
 }
 
+.add-media,
+.add-gif,
+.add-emoji {
+  cursor: pointer;
+  transition: opacity 0.5s ease-in-out;
+}
+
 @media (max-width: 320px) {
   .post-input-features {
     gap: 1rem;
@@ -101,5 +108,12 @@
   .post-btn:hover {
     background-color: var(--secondary-color);
     color: var(--primary-color);
+    transform: scale(1.1);
+  }
+
+  .add-media:hover,
+  .add-gif:hover,
+  .add-emoji:hover {
+    transform: scale(1.1);
   }
 }

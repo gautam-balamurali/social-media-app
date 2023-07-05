@@ -23,7 +23,7 @@ const Sidebar = () => {
             className={isActiveRoute("/") ? "active" : ""}
             onClick={() => navigate("/")}
           >
-            <div className="nav-link">
+            <div className="nav-link cursor-pointer">
               {isActiveRoute("/") ? (
                 <AiFillHome className="nav-item" title="Home" size={24} />
               ) : (
@@ -36,7 +36,7 @@ const Sidebar = () => {
             className={isActiveRoute("/explore") ? "active" : ""}
             onClick={() => navigate("/explore")}
           >
-            <div className="nav-link">
+            <div className="nav-link cursor-pointer">
               {isActiveRoute("/explore") ? (
                 <MdExplore className="nav-item" title="Home" size={24} />
               ) : (
@@ -53,7 +53,7 @@ const Sidebar = () => {
             className={isActiveRoute("/bookmarks") ? "active" : ""}
             onClick={() => navigate("/bookmarks")}
           >
-            <div className="nav-link">
+            <div className="nav-link cursor-pointer">
               {isActiveRoute("/bookmarks") ? (
                 <BsBookmarksFill className="nav-item" title="Home" size={24} />
               ) : (
@@ -66,7 +66,7 @@ const Sidebar = () => {
             className={isActiveRoute("/liked-posts") ? "active" : ""}
             onClick={() => navigate("/liked-posts")}
           >
-            <div className="nav-link">
+            <div className="nav-link cursor-pointer">
               {isActiveRoute("/liked-posts") ? (
                 <RiHeartsFill
                   className="nav-item"
@@ -85,7 +85,7 @@ const Sidebar = () => {
             }
             onClick={() => navigate(`/profile/${user?.username}`)}
           >
-            <div className="nav-link">
+            <div className="nav-link cursor-pointer">
               {isActiveRoute(`/profile/${user?.username}`) ? (
                 <FaUserCircle className="nav-item" title="Home" size={24} />
               ) : (
@@ -102,11 +102,15 @@ const Sidebar = () => {
       </nav>
       <div className="current-user-details">
         <img
-          className="current-user-avatar"
+          className="current-user-avatar cursor-pointer"
           src={user?.picUrl}
           alt={user?.username}
+          onClick={() => navigate(`/profile/${user?.username}`)}
         />
-        <div className="current-user-info">
+        <div
+          onClick={() => navigate(`/profile/${user?.username}`)}
+          className="current-user-info cursor-pointer"
+        >
           <h4>{`${user?.firstName} ${user?.lastName}`}</h4>
           <p>@{user?.username}</p>
         </div>

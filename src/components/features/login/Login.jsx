@@ -81,7 +81,7 @@ const Login = () => {
           </div>
           <div className="pswd-login-section">
             <div
-              className="eye-icon"
+              className="eye-icon cursor-pointer"
               aria-hidden="true"
               onClick={toggleShowHidePassword}
             >

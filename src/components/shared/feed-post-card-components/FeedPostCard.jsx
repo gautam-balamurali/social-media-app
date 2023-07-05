@@ -90,14 +90,14 @@ const FeedPostCard = ({ post }) => {
         <div className="post-top-section">
           <div className="user-details">
             <img
-              className="user-avatar"
+              className="user-avatar cursor-pointer"
               src={postOwner.picUrl}
               alt={username}
               onClick={() => navigate(`/profile/${username}`)}
             />
             <div className="post-basic-info">
               <div
-                className="user-name-details"
+                className="user-name-details cursor-pointer"
                 onClick={() => navigate(`/profile/${username}`)}
               >
                 <h4>{`${postOwner?.firstName} ${postOwner?.lastName}`}</h4>
