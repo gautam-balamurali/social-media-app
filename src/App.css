@@ -134,6 +134,10 @@ button {
   cursor: pointer;
 }
 
+.hidden {
+  display: none;
+}
+
 @media (min-width: 768px) {
   h1 {
     font-size: 2.5rem;

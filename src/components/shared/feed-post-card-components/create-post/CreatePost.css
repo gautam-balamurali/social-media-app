@@ -86,6 +86,13 @@
   transition: opacity 0.5s ease-in-out;
 }
 
+.post-btn:disabled {
+  cursor: not-allowed;
+  border-color: var(--medium-shade-color);
+  background-color: var(--medium-shade-color);
+  color: var(--light-shade-color);
+}
+
 @media (max-width: 320px) {
   .post-input-features {
     gap: 1rem;

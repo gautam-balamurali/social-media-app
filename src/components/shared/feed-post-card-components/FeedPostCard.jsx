@@ -210,7 +210,7 @@ const FeedPostCard = ({ post }) => {
                   <span className="btn-icon">
                     <FaRegCommentAlt size={18} />
                   </span>
-                  <span className="icon-count">{comments.length}</span>
+                  <span className="icon-count">{comments?.length}</span>
                 </>
               }
             />
