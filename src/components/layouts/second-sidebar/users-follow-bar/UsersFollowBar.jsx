@@ -60,7 +60,7 @@ const UsersFollowBar = () => {
             <div key={user.username} className="suggested-users-section">
               <div
                 onClick={() => navigate(`/profile/${user?.username}`)}
-                className="suggested-user-details"
+                className="suggested-user-details cursor-pointer"
               >
                 <img
                   className="suggested-user-avatar"

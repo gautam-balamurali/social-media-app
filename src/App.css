@@ -102,6 +102,10 @@ label {
   letter-spacing: 0.1em;
 }
 
+button {
+  transition: opacity 0.5s ease-in-out;
+}
+
 ::-webkit-scrollbar {
   width: 2px;
 }
@@ -128,6 +132,10 @@ label {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -167,5 +175,9 @@ label {
 
   .ls-view {
     display: inline-block;
+  }
+
+  button:hover {
+    transform: scale(1.1);
   }
 }

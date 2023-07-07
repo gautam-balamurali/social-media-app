@@ -20,6 +20,7 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [],
+    mediaUrl: "",
   },
   {
     _id: uuid(),
@@ -34,6 +35,7 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [],
+    mediaUrl: "",
   },
   {
     _id: uuid(),
@@ -76,7 +78,7 @@ export const posts = [
           lastName: "Moustachim",
           username: "moustachim69",
           password: "sadMoustachim123",
-          picUrl: "http://bit.ly/42Zm7tM",
+          picUrl: "https://res.cloudinary.com/dbe8yf165/image/upload/v1688578533/twitlyx/mushu_lswrux.jpg",
           bgUrl: "https://picsum.photos/224/320?random=3",
           createdAt: formatDate(),
           updatedAt: formatDate(),
@@ -90,7 +92,7 @@ export const posts = [
           lastName: "Patidar",
           username: "wanderlust420",
           password: "yesPatidar123",
-          picUrl: "http://bit.ly/42Zm7tM",
+          picUrl: "https://res.cloudinary.com/dbe8yf165/image/upload/v1688578534/twitlyx/yespatidar_jp345o.jpg",
           bgUrl: "https://picsum.photos/224/320?random=4",
           createdAt: formatDate(),
           updatedAt: formatDate(),
@@ -133,5 +135,6 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [],
+    mediaUrl: "",
   },
 ];
