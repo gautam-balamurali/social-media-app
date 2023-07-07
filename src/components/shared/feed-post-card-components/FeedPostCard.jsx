@@ -22,7 +22,7 @@ import { SlUserFollow, SlUserUnfollow } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
 
 const FeedPostCard = ({ post }) => {
-  const { _id, content, likes, username, updatedAt, comments } = post;
+  const { _id, content, likes, username, updatedAt, comments, mediaUrl } = post;
 
   const [showPostConfigMenu, setShowPostConfigMenu] = useState(false);
 
@@ -90,14 +90,14 @@ const FeedPostCard = ({ post }) => {
         <div className="post-top-section">
           <div className="user-details">
             <img
-              className="user-avatar"
+              className="user-avatar cursor-pointer"
               src={postOwner.picUrl}
               alt={username}
               onClick={() => navigate(`/profile/${username}`)}
             />
             <div className="post-basic-info">
               <div
-                className="user-name-details"
+                className="user-name-details cursor-pointer"
                 onClick={() => navigate(`/profile/${username}`)}
               >
                 <h4>{`${postOwner?.firstName} ${postOwner?.lastName}`}</h4>
@@ -185,6 +185,18 @@ const FeedPostCard = ({ post }) => {
           </div>
         </div>
         <p className="post-desc">{addLineBreaks(content)}</p>
+        {mediaUrl.length > 0 && (
+          <div className="media-input-container">
+            {mediaUrl.split("/")[4] === "image" && (
+              <img src={mediaUrl} alt="media" className="media-input-section" />
+            )}
+            {mediaUrl.split("/")[4] === "video" && (
+              <video controls autoPlay loop className="media-input-section">
+                <source src={mediaUrl} alt="media" type="video/mp4" />
+              </video>
+            )}
+          </div>
+        )}
         <hr className="separator" />
         <div className="action-btns">
           <div className="action-btns-post">
@@ -210,7 +222,7 @@ const FeedPostCard = ({ post }) => {
                   <span className="btn-icon">
                     <FaRegCommentAlt size={18} />
                   </span>
-                  <span className="icon-count">{comments.length}</span>
+                  <span className="icon-count">{comments?.length}</span>
                 </>
               }
             />

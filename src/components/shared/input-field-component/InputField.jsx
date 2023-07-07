@@ -15,6 +15,8 @@ const InputField = ({
   min,
   max,
   required,
+  accept,
+  id,
 }) => {
   const handleChange = (event) => {
     if (typeof onChangeFunction === "function") {
@@ -24,12 +26,12 @@ const InputField = ({
 
   return (
     <>
-      <label className={label_class} htmlFor={`${label}-txt-inpt`}>
+      <label className={label_class} htmlFor={id ?? `${label}-txt-inpt`}>
         <span className={span_class}>{span}</span>
         {label}
       </label>
       <input
-        id={`${label}-txt-inpt`}
+        id={id ?? `${label}-txt-inpt`}
         className={className}
         style={style}
         onChange={handleChange}
@@ -42,6 +44,7 @@ const InputField = ({
         min={min}
         max={max}
         required={required}
+        accept={accept}
       />
     </>
   );

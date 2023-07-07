@@ -2,7 +2,10 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 
 import { postsReducer } from "core/reducers/posts-reducer/PostsReducerFunction";
 import { postsReducerInitialState } from "core/reducers/posts-reducer/PostsReducerInitialState";
-import { getAllPostsService } from "core/services/posts-service/posts.service";
+import {
+  addPostService,
+  getAllPostsService,
+} from "core/services/posts-service/posts.service";
 import { useAuthentication } from "../authentication-context/AuthenticationContext";
 import {
   addToBookmarkService,
@@ -137,6 +140,24 @@ export const PostsProvider = ({ children }) => {
     postsDispatch({ type: "LOADER_STOPPED" });
   };
 
+  const createNewPost = async (postData) => {
+    postsDispatch({ type: "LOADER_INITIATED" });
+    try {
+      const response = await addPostService(postData, token);
+      console.log({ response }, "createNewPostService");
+      if (response.status === 200 || response.status === 201) {
+        postsDispatch({
+          type: "CREATE_POST",
+          payload: response?.data?.posts,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      postsDispatch({ type: "LOADER_STOPPED" });
+    }
+  };
+
   useEffect(() => {
     if (token) {
       postsDispatch({ type: "LOADER_INITIATED" });
@@ -157,6 +178,7 @@ export const PostsProvider = ({ children }) => {
         likePost,
         dislikePost,
         applyFiltersClickHandler,
+        createNewPost,
       }}
     >
       {children}

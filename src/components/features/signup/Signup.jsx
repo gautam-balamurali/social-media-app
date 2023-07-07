@@ -143,7 +143,7 @@ const Signup = () => {
           <div className="password-setion-container">
             <div className="pswd-section">
               <div
-                className="signup-eye-icon"
+                className="signup-eye-icon cursor-pointer"
                 aria-hidden="true"
                 onClick={toggleShowHidePassword}
               >
@@ -163,7 +163,7 @@ const Signup = () => {
             </div>
             <div className="pswd-section">
               <div
-                className="signup-eye-icon"
+                className="signup-eye-icon cursor-pointer"
                 aria-hidden="true"
                 onClick={toggleShowHidePassword}
               >
