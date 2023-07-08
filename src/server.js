@@ -88,6 +88,7 @@ export function makeServer({ environment = "development" } = {}) {
         unfollowUserHandler.bind(this)
       );
       this.passthrough("https://api.cloudinary.com/v1_1/dbe8yf165/auto/upload");
+      this.passthrough("https://tenor.googleapis.com/**");
     },
   });
 }

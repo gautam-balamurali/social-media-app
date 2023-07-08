@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { FaPhotoVideo } from "react-icons/fa";
 import { MdCancel, MdInsertEmoticon } from "react-icons/md";
 import { useRef, useState } from "react";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
+import GifPicker from "gif-picker-react";
+import OutsideClickHandler from "react-outside-click-handler";
 
 import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
 import Button from "components/shared/button-component/Button";
@@ -22,6 +26,8 @@ const CreatePost = () => {
   });
   const [media, setMedia] = useState(null);
   const createPostTextRef = useRef();
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [showGIFPicker, setShowGIFPicker] = useState(false);
 
   const isPostDataEmpty = () => postData?.content?.length < 1 && media === null;
 
@@ -43,15 +49,15 @@ const CreatePost = () => {
       const maxSizeVideo = 100 * 1024 * 1024; // 100MB
 
       if (
-        selectedMedia.type.includes("image") &&
-        selectedMedia.size > maxSizeImage
+        selectedMedia?.type?.includes("image") &&
+        selectedMedia?.size > maxSizeImage
       ) {
         alert("Image size should be less than equal to 10 MB");
         return;
       }
       if (
-        selectedMedia.type.includes("video") &&
-        selectedMedia.size > maxSizeVideo
+        selectedMedia?.type?.includes("video") &&
+        selectedMedia?.size > maxSizeVideo
       ) {
         alert("Video size should be less than equal to 100 MB");
         return;
@@ -74,6 +80,34 @@ const CreatePost = () => {
     createPostTextRef.current.value = "";
   };
 
+  const toggleEmojiModal = () => {
+    setShowEmojiPicker(true);
+  };
+
+  const emojiClickHandler = (emojiObj) => {
+    const emoji = emojiObj.native;
+    setPostData((prev) => ({ ...prev, content: prev.content + emoji }));
+    setShowEmojiPicker(false);
+  };
+
+  const handleEmojiPickerOutsideClick = () => {
+    setShowEmojiPicker(false);
+  };
+
+  const toggleGIFModal = () => {
+    setShowGIFPicker(true);
+  };
+
+  const gifClickHandler = (gifObj) => {
+    const gif = gifObj.preview.url;
+    setMedia(gif);
+    setShowGIFPicker(false);
+  };
+
+  const handleGIFPickerOutsideClick = () => {
+    setShowGIFPicker(false);
+  };
+
   return (
     <div className="create-post-grid">
       <img
@@ -92,6 +126,7 @@ const CreatePost = () => {
               placeholder="What's on your mind?!"
               onChange={handlePostDataContent}
               ref={createPostTextRef}
+              value={postData.content}
             />
             {media && (
               <div className="media-input-container">
@@ -101,7 +136,7 @@ const CreatePost = () => {
                     controls
                     autoPlay
                     loop
-                    className="media-input-section"
+                    className="media-input-video-section"
                   >
                     <source
                       src={URL.createObjectURL(media)}
@@ -110,9 +145,14 @@ const CreatePost = () => {
                     />
                   </video>
                 )}
-                {media?.type?.includes("image") && (
+                {(media?.type?.includes("image") ||
+                  (typeof media === "string" && media?.includes("gif"))) && (
                   <img
-                    src={URL.createObjectURL(media)}
+                    src={
+                      typeof media === "string" && media?.includes("gif")
+                        ? media
+                        : URL.createObjectURL(media)
+                    }
                     alt="preview"
                     className="media-input-section"
                   />
@@ -128,7 +168,7 @@ const CreatePost = () => {
         </div>
         <div className="post-input-actions">
           <div className="post-input-features">
-            <label className="add-media" htmlFor="file-input">
+            <label className="add-media-label" htmlFor="file-input">
               <InputField
                 id={"file-input"}
                 type={"file"}
@@ -136,14 +176,58 @@ const CreatePost = () => {
                 className={"hidden"}
                 onChangeFunction={handlePostDataMedia}
               />
-              <FaPhotoVideo size={20} title="Add Photo/Video" />
+              <FaPhotoVideo
+                className="add-media"
+                size={20}
+                title="Add Photo/Video"
+              />
             </label>
-            <AiOutlineGif className="add-gif" size={24} title="Add GIF" />
-            <MdInsertEmoticon
-              className="add-emoji"
-              size={20}
-              title="Add Emoji"
-            />
+            <label className="add-gif-label">
+              <AiOutlineGif
+                className="add-gif"
+                size={24}
+                title="Add GIF"
+                onClick={toggleGIFModal}
+              />
+              {showGIFPicker && (
+                <OutsideClickHandler
+                  onOutsideClick={handleGIFPickerOutsideClick}
+                >
+                  <div className="gif-container">
+                    <GifPicker
+                      tenorApiKey={`${process.env.REACT_APP_TENOR_API_KEY}`}
+                      onGifClick={gifClickHandler}
+                      height="16rem"
+                      width="15rem"
+                      categoryHeight={75}
+                    />
+                  </div>
+                </OutsideClickHandler>
+              )}
+            </label>
+            <label className="add-emoji-label">
+              <MdInsertEmoticon
+                size={20}
+                title="Add Emoji"
+                onClick={toggleEmojiModal}
+                className="add-emoji"
+              />
+              {showEmojiPicker && (
+                <OutsideClickHandler
+                  onOutsideClick={handleEmojiPickerOutsideClick}
+                >
+                  <div className="emoji-container">
+                    <Picker
+                      data={data}
+                      emojiSize={20}
+                      emojiButtonSize={28}
+                      previewPosition="none"
+                      onEmojiSelect={emojiClickHandler}
+                    />
+                  </div>
+                </OutsideClickHandler>
+              )}
+            </label>
           </div>
           <Button
             disabled={isPostDataEmpty()}
