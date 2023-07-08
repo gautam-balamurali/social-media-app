@@ -42,7 +42,7 @@
   backdrop-filter: blur(9.2px);
   -webkit-backdrop-filter: blur(9.2px);
   border: 1px solid rgba(246, 249, 251, 0.25);
-  z-index: 1;
+  z-index: 2;
 }
 
 @media (min-width: 1024px) {

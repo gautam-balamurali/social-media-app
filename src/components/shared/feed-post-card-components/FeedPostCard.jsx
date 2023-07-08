@@ -91,7 +91,7 @@ const FeedPostCard = ({ post }) => {
           <div className="user-details">
             <img
               className="user-avatar cursor-pointer"
-              src={postOwner.picUrl}
+              src={postOwner?.picUrl}
               alt={username}
               onClick={() => navigate(`/profile/${username}`)}
             />
@@ -191,7 +191,7 @@ const FeedPostCard = ({ post }) => {
               <img src={mediaUrl} alt="media" className="media-input-section" />
             )}
             {mediaUrl.split("/")[4] === "video" && (
-              <video controls autoPlay loop className="media-input-section">
+              <video controls autoPlay loop className="media-input-video-section">
                 <source src={mediaUrl} alt="media" type="video/mp4" />
               </video>
             )}

@@ -103,7 +103,14 @@
 .media-input-section {
   width: 100%;
   height: auto;
-  object-fit: cover;
+  object-fit: fill;
+  aspect-ratio: 1.43/1;
+}
+
+.media-input-video-section {
+  width: 100%;
+  height: auto;
+  object-fit: fill;
 }
 
 .close-btn {
@@ -121,14 +128,15 @@
   align-self: center;
 }
 
-.add-emoji {
+.add-emoji-label,
+.add-gif-label {
   position: relative;
 }
 
-.emoji-container {
+.emoji-container,
+.gif-container {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 10rem;
   z-index: 3;
   transform: translate(-50%, -50%);
 }
@@ -137,9 +145,12 @@
   .post-input-features {
     gap: 1rem;
   }
+}
 
-  .emoji-container {
-    top: 60%;
+@media (max-width: 300px) {
+  .emoji-container,
+  .gif-container {
+    left: -1rem;
   }
 }
 
@@ -151,31 +162,6 @@
   .add-gif,
   .add-emoji {
     display: none;
-  }
-}
-
-@media (min-width: 400px) {
-  .emoji-container {
-    top: 45%;
-  }
-}
-
-@media (min-width: 600px) {
-  .emoji-container {
-    top: 35%;
-  }
-}
-
-@media (min-width: 600px) and (max-height: 360px) {
-  .emoji-container {
-    top: 90%;
-  }
-}
-
-@media (min-width: 700px) {
-  .emoji-container {
-    top: 30%;
-    left: 30%;
   }
 }
 
@@ -200,15 +186,5 @@
 
   .close-btn {
     right: 1%;
-  }
-
-  .emoji-container {
-    top: 25%;
-  }
-}
-
-@media (min-width: 1280px) {
-  .emoji-container {
-    top: 35%;
   }
 }
