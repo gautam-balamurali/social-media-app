@@ -111,13 +111,13 @@ button {
 }
 ::-webkit-scrollbar-track {
   background-color: var(--secondary-color);
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
   background: var(--primary-color);
 }
 
