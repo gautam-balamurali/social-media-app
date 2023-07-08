@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { FaPhotoVideo } from "react-icons/fa";
 import { MdCancel, MdInsertEmoticon } from "react-icons/md";
 import { useRef, useState } from "react";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 
 import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
 import Button from "components/shared/button-component/Button";
@@ -10,6 +12,7 @@ import { usePosts } from "core/contexts/posts-context/PostsContext";
 import InputField from "components/shared/input-field-component/InputField";
 import { handleMediaUpload } from "utils/handle-media-upload/handleMediaUpload";
 import "./CreatePost.css";
+import OutsideClickHandler from "react-outside-click-handler";
 
 const CreatePost = () => {
   const { user } = useAuthentication();
@@ -22,6 +25,7 @@ const CreatePost = () => {
   });
   const [media, setMedia] = useState(null);
   const createPostTextRef = useRef();
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   const isPostDataEmpty = () => postData?.content?.length < 1 && media === null;
 
@@ -74,6 +78,20 @@ const CreatePost = () => {
     createPostTextRef.current.value = "";
   };
 
+  const toggleEmojiModal = () => {
+    setShowEmojiPicker(true);
+  };
+
+  const emojiClickHandler = (emojiObj) => {
+    const emoji = emojiObj.native;
+    setPostData((prev) => ({ ...prev, content: prev.content + emoji }));
+    setShowEmojiPicker(false);
+  };
+
+  const handleEmojiPickerOutsideClick = () => {
+    setShowEmojiPicker(false);
+  };
+
   return (
     <div className="create-post-grid">
       <img
@@ -92,6 +110,7 @@ const CreatePost = () => {
               placeholder="What's on your mind?!"
               onChange={handlePostDataContent}
               ref={createPostTextRef}
+              value={postData.content}
             />
             {media && (
               <div className="media-input-container">
@@ -143,7 +162,23 @@ const CreatePost = () => {
               className="add-emoji"
               size={20}
               title="Add Emoji"
+              onClick={toggleEmojiModal}
             />
+            {showEmojiPicker && (
+              <OutsideClickHandler
+                onOutsideClick={handleEmojiPickerOutsideClick}
+              >
+                <div className="emoji-container">
+                  <Picker
+                    data={data}
+                    emojiSize={20}
+                    emojiButtonSize={28}
+                    previewPosition="none"
+                    onEmojiSelect={emojiClickHandler}
+                  />
+                </div>
+              </OutsideClickHandler>
+            )}
           </div>
           <Button
             disabled={isPostDataEmpty()}
