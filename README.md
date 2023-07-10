@@ -2,7 +2,7 @@
     <h1>
 <img style="border-radius: 50%; width: 1.5rem; height: 1.5rem; object-fit: cover" src='https://res.cloudinary.com/dbe8yf165/image/upload/v1688964194/twitlyx/logo-2_ihpmf7.png' /> TwitLyx</h1>
      <h3 >
-      TwitLyx is a full-fledged compact social media app designed for connecting and engaging with others. It offers a simple and intuitive platform where people can share their thoughts, photos, videos, GIFs and emojis with their friends and explore different points of view. Users can converse with each other and express their opinions in a fun and interactive way.
+      TwitLyx is a full-fledged social media app designed for connecting and engaging with others. It offers a simple and intuitive platform where people can share their thoughts, photos, videos, GIFs and emojis with their friends and others and explore different points of view. Users can converse with each other and express their opinions in a fun and interactive way.
     </h3>
 </div>
 
