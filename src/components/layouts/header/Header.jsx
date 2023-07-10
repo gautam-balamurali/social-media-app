@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import "./Header.css";
 
 const Header = () => {

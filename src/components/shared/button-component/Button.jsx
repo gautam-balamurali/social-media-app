@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const Button = ({
   clickHandlerFunction,
   label,

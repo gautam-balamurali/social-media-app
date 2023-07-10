@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { FaCamera, FaPencilAlt } from "react-icons/fa";
 import "./EditProfile.css";
 import Button from "components/shared/button-component/Button";

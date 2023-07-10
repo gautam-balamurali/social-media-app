@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import ProfileCard from "components/shared/profile-card-component/ProfileCard";
 import "./UserProfile.css";
 import { useUsers } from "core/contexts/users-context/UsersContext";

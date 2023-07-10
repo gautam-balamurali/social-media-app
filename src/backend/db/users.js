@@ -20,7 +20,7 @@ export const users = [
     bookmarks: [],
     followers: [],
     following: [],
-    bio: "Owns Sochenge",
+    bio: "Owns TwitLyx 💼 | Cricket Fanatic 🏏",
     websiteUrl: "https://gautam-balamurali.netlify.app",
     websiteName: "gautam-bm.com",
   },

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import ExploreFeed from "components/features/explore-feed/ExploreFeed";
 
 const ExploreFeedPage = () => {

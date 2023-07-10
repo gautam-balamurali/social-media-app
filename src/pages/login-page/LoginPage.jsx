@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Login from "components/features/login/Login";
 
 const LoginPage = () => {

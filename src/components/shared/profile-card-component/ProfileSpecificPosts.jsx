@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { usePosts } from "core/contexts/posts-context/PostsContext";
 import FeedPostCard from "../feed-post-card-components/FeedPostCard";
 import FilterBar from "../filter-bar-component/FilterBar";

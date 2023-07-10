@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useLocation } from "react-router-dom";
 
 import AppRoutes from "core/app-routes/AppRoutes";

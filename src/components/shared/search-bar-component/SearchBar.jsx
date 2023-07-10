@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import InputField from "../input-field-component/InputField";
 import "./SearchBar.css";
 

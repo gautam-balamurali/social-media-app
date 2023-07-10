@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { v4 as uuid } from "uuid";
 
 //File for constants

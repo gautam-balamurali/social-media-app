@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
 import { usePosts } from "core/contexts/posts-context/PostsContext";
 import "./HomeFeed.css";

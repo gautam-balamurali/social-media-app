@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useEffect } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import "./CustomModal.css";

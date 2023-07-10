@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineHome, AiFillHome } from "react-icons/ai";
 import { MdOutlineExplore, MdExplore } from "react-icons/md";

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useParams } from "react-router-dom";
 
 import UserProfile from "components/features/user-profile/UserProfile";

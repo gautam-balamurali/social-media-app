@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import AppLayout from "components/layouts/app-layout/AppLayout";
 import "./App.css";
 

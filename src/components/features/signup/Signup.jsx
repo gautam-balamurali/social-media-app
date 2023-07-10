@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 

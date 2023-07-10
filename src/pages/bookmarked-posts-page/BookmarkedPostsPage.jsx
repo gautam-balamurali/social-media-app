@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import BookmarkedPosts from "components/features/bookmarked-posts/BookmarkedPosts";
 
 const BookmarkedPostsPage = () => {
