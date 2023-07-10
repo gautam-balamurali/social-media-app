@@ -50,8 +50,10 @@ export const posts = [
           lastName: "Balika",
           username: "adarshbalika",
           password: "adarshBalika123",
-          picUrl: "http://bit.ly/42Zm7tM",
-          bgUrl: "https://picsum.photos/224/320?random=1",
+          picUrl:
+            "https://res.cloudinary.com/dbe8yf165/image/upload/v1688910763/twitlyx/adarsh-balika_blzvbt.jpg",
+          bgUrl:
+            "https://res.cloudinary.com/dbe8yf165/image/upload/v1688923211/twitlyx/pexels-pixabay-163036_a52vxe.jpg",
           createdAt: formatDate(),
           updatedAt: formatDate(),
           bookmarks: [],
@@ -64,8 +66,10 @@ export const posts = [
           lastName: "Mast",
           username: "elonmast",
           password: "elonMast123",
-          picUrl: "http://bit.ly/42Zm7tM",
-          bgUrl: "https://picsum.photos/224/320?random=2",
+          picUrl:
+            "https://res.cloudinary.com/dbe8yf165/image/upload/v1688923899/twitlyx/elon-must_ydcl3b.jpg",
+          bgUrl:
+            "https://res.cloudinary.com/dbe8yf165/image/upload/v1688924058/twitlyx/tesla-fans-schweiz-2swaWy4Xhb0-unsplash_d5qoqa.jpg",
           createdAt: formatDate(),
           updatedAt: formatDate(),
           bookmarks: [],
@@ -78,8 +82,9 @@ export const posts = [
           lastName: "Moustachim",
           username: "moustachim69",
           password: "sadMoustachim123",
-          picUrl: "https://res.cloudinary.com/dbe8yf165/image/upload/v1688578533/twitlyx/mushu_lswrux.jpg",
-          bgUrl: "https://picsum.photos/224/320?random=3",
+          picUrl: "https://github.com/syedmustassim.png",
+          bgUrl:
+            "https://res.cloudinary.com/dbe8yf165/image/upload/v1688923211/twitlyx/pexels-el%C4%ABna-ar%C4%81ja-3317038_mquokb.jpg",
           createdAt: formatDate(),
           updatedAt: formatDate(),
           bookmarks: [],
@@ -88,12 +93,14 @@ export const posts = [
         },
         {
           _id: "9d2f44ab-96fc-4744-b83d-e7cbc3be21b5",
-          firstName: "Yess",
-          lastName: "Patidar",
+          firstName: "Yes",
+          lastName: "Yamaha",
           username: "wanderlust420",
           password: "yesPatidar123",
-          picUrl: "https://res.cloudinary.com/dbe8yf165/image/upload/v1688578534/twitlyx/yespatidar_jp345o.jpg",
-          bgUrl: "https://picsum.photos/224/320?random=4",
+          picUrl:
+            "https://res.cloudinary.com/dbe8yf165/image/upload/v1688578534/twitlyx/yespatidar_jp345o.jpg",
+          bgUrl:
+            "https://res.cloudinary.com/dbe8yf165/image/upload/v1688578534/twitlyx/yespatidar_jp345o.jpg",
           createdAt: formatDate(),
           updatedAt: formatDate(),
           bookmarks: [],
@@ -106,8 +113,10 @@ export const posts = [
           lastName: "K",
           username: "sasta_arjit",
           password: "shubumK123",
-          picUrl: "http://bit.ly/42Zm7tM",
-          bgUrl: "https://picsum.photos/224/320?random=5",
+          picUrl:
+            "https://res.cloudinary.com/dbe8yf165/image/upload/v1688910761/twitlyx/shubhi-dp_ayn4f6.jpg",
+          bgUrl:
+            "https://res.cloudinary.com/dbe8yf165/image/upload/v1688923210/twitlyx/pexels-pixabay-160472_xkvnep.jpg",
           createdAt: formatDate(),
           updatedAt: formatDate(),
           bookmarks: [],
@@ -120,8 +129,10 @@ export const posts = [
           lastName: "Rani",
           username: "silentQueen",
           password: "princess123",
-          picUrl: "http://bit.ly/42Zm7tM",
-          bgUrl: "https://picsum.photos/224/320?random=6",
+          picUrl:
+            "https://res.cloudinary.com/dbe8yf165/image/upload/v1688910761/twitlyx/prince-dp_n5tmsl.jpg",
+          bgUrl:
+            "https://res.cloudinary.com/dbe8yf165/image/upload/v1688923210/twitlyx/pexels-pixabay-207983_hblt3s.jpg",
           createdAt: formatDate(),
           updatedAt: formatDate(),
           bookmarks: [],
