@@ -22,11 +22,14 @@ import { useAuthentication } from "core/contexts/authentication-context/Authenti
 import { useUsers } from "core/contexts/users-context/UsersContext";
 import { SlUserFollow, SlUserUnfollow } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
+import CustomModal from "../custom-modal-component/CustomModal";
+import EditPost from "./edit-post/EditPost";
 
 const FeedPostCard = ({ post }) => {
   const { _id, content, likes, username, updatedAt, comments, mediaUrl } = post;
 
   const [showPostConfigMenu, setShowPostConfigMenu] = useState(false);
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
 
   const {
     bookmarks,
@@ -34,6 +37,7 @@ const FeedPostCard = ({ post }) => {
     removePostFromBookmarks,
     likePost,
     dislikePost,
+    deletePost,
   } = usePosts();
 
   const { user: currentUser } = useAuthentication();
@@ -82,12 +86,23 @@ const FeedPostCard = ({ post }) => {
 
   const navigate = useNavigate();
 
+  const handleOpenEditModal = () => {
+    setEditModalOpen(true);
+  };
+  const handleCloseEditModal = () => {
+    setEditModalOpen(false);
+  };
+
   useEffect(() => {
     setShowPostConfigMenu(false);
   }, [post, postOwner]);
 
   return (
     <div className="post-container">
+      <CustomModal isOpen={isEditModalOpen} onClose={handleCloseEditModal}>
+        <EditPost post={post} handleCloseEditModal={handleCloseEditModal} />
+      </CustomModal>
+
       <div className="post-section">
         <div className="post-top-section">
           <div className="user-details">
@@ -136,6 +151,7 @@ const FeedPostCard = ({ post }) => {
                             <span className="icon-count">Edit</span>
                           </>
                         }
+                        clickHandlerFunction={handleOpenEditModal}
                       />
                       <Button
                         label={
@@ -146,6 +162,8 @@ const FeedPostCard = ({ post }) => {
                             <span className="icon-count">Delete</span>
                           </>
                         }
+                        clickHandlerFunction={deletePost}
+                        params={_id}
                       />
                     </>
                   )}
@@ -186,14 +204,19 @@ const FeedPostCard = ({ post }) => {
             )}
           </div>
         </div>
-        <p className="post-desc">{addLineBreaks(content)}</p>
+        <p className="post-desc">{content}</p>
         {mediaUrl.length > 0 && (
           <div className="media-input-container">
             {mediaUrl.split("/")[4] === "image" && (
               <img src={mediaUrl} alt="media" className="media-input-section" />
             )}
             {mediaUrl.split("/")[4] === "video" && (
-              <video controls autoPlay loop className="media-input-video-section">
+              <video
+                controls
+                autoPlay
+                loop
+                className="media-input-video-section"
+              >
                 <source src={mediaUrl} alt="media" type="video/mp4" />
               </video>
             )}

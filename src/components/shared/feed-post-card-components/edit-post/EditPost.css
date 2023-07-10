@@ -127,10 +127,10 @@
   position: relative;
 }
 
-.emoji-container,
-.gif-container {
+.edit-emoji-container,
+.edit-gif-container {
   position: absolute;
-  top: 10rem;
+  top: -10rem;
   z-index: 3;
   transform: translate(-50%, -50%);
 }
@@ -142,8 +142,8 @@
 }
 
 @media (max-width: 300px) {
-  .emoji-container,
-  .gif-container {
+  .edit-emoji-container,
+  .edit-gif-container {
     left: -1rem;
   }
 }

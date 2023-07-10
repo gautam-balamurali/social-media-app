@@ -6,6 +6,8 @@ import { postsReducer } from "core/reducers/posts-reducer/PostsReducerFunction";
 import { postsReducerInitialState } from "core/reducers/posts-reducer/PostsReducerInitialState";
 import {
   addPostService,
+  deletePostService,
+  editPostService,
   getAllPostsService,
 } from "core/services/posts-service/posts.service";
 import { useAuthentication } from "../authentication-context/AuthenticationContext";
@@ -160,6 +162,38 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  const deletePost = async (postId) => {
+    try {
+      const response = await deletePostService(postId, token);
+      console.log({ response }, "deletePostsService");
+      if (response.status === 200 || response.status === 201) {
+        postsDispatch({
+          type: "DELETE_POST",
+          payload: response?.data?.posts,
+        });
+      }
+    } catch (error) {}
+  };
+
+  const editPost = async (postData) => {
+    console.log({ postData });
+    postsDispatch({ type: "LOADER_INITIATED" });
+    try {
+      const response = await editPostService(postData, token);
+      console.log({ response }, "editPostService");
+      if (response.status === 200 || response.status === 201) {
+        postsDispatch({
+          type: "EDIT_POST",
+          payload: response?.data?.posts,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      postsDispatch({ type: "LOADER_STOPPED" });
+    }
+  };
+
   useEffect(() => {
     if (token) {
       postsDispatch({ type: "LOADER_INITIATED" });
@@ -181,6 +215,8 @@ export const PostsProvider = ({ children }) => {
         dislikePost,
         applyFiltersClickHandler,
         createNewPost,
+        deletePost,
+        editPost,
       }}
     >
       {children}
