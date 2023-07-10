@@ -17,6 +17,8 @@ export const postsReducer = (state, action) => {
       return { ...state, posts: [...payload] };
     case "EDIT_POST":
       return { ...state, posts: [...payload] };
+    case "DELETE_POST":
+      return { ...state, posts: [...payload] };
     case "ADD_TO_BOOKMARKS":
       return { ...state, bookmarks: [...payload] };
     case "REMOVE_FROM_BOOKMARKS":

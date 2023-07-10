@@ -11,3 +11,9 @@
     display: none;
   }
 }
+
+@media (min-width: 1280px) {
+  .posts-container {
+    min-width: 55.9rem;
+  }
+}
