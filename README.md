@@ -21,7 +21,7 @@ $ npm start
 
 ## 🚀 Deployed Link
 
-Check out the live demo of TwitLyx: [TwitLyx]()
+Check out the live demo of TwitLyx: [TwitLyx](https://twitlyx-gautam-balamurali.netlify.app/)
 
 ---
 
