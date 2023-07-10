@@ -1,6 +1,6 @@
 <div align="center">
-    <h1 style="display: flex; align-items: center; gap: 1rem; letter-spacing:0.2em; align-self:center">
-<img style=' border-radius: 50%; width: 3.5rem; height: 3.5rem; object-fit: cover' src='https://res.cloudinary.com/dbe8yf165/image/upload/v1688964194/twitlyx/logo-2_ihpmf7.png' />TwitLyx</h1>
+    <h1>
+<img style="border-radius: 50%; width: 1.5rem; height: 1.5rem; object-fit: cover" src='https://res.cloudinary.com/dbe8yf165/image/upload/v1688964194/twitlyx/logo-2_ihpmf7.png' /> TwitLyx</h1>
      <h3 >
       TwitLyx is a compact social media app designed for connecting and engaging with others. It offers a simple and intuitive platform where people can share their thoughts, photos, videos, GIFs and emojis with their friends and explore different points of view. Users can converse with each other and express their opinions in a fun and interactive way.
     </h3>
