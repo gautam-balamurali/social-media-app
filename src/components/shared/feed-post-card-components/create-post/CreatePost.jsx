@@ -127,6 +127,7 @@ const CreatePost = () => {
               onChange={handlePostDataContent}
               ref={createPostTextRef}
               value={postData.content}
+              maxLength={300}
             />
             {media && (
               <div className="media-input-container">
