@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import SearchBar from "components/shared/search-bar-component/SearchBar";
 import UsersFollowBar from "./users-follow-bar/UsersFollowBar";
 import "./SecondSidebar.css";

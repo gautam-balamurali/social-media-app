@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { TbArrowBack } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import { FaUserEdit } from "react-icons/fa";

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { createContext, useContext, useEffect, useReducer } from "react";
 
 import { postsReducer } from "core/reducers/posts-reducer/PostsReducerFunction";

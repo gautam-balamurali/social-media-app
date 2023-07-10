@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export const postsReducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {

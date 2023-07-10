@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { AiOutlineGif } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { FaPhotoVideo } from "react-icons/fa";

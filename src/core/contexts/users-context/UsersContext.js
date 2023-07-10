@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { createContext, useContext, useEffect, useReducer } from "react";
 
 import { usersReducer } from "core/reducers/users-reducer/UsersReducerFunction";

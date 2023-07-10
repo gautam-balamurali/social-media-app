@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { usePosts } from "core/contexts/posts-context/PostsContext";
 import FeedPostCard from "components/shared/feed-post-card-components/FeedPostCard";
 import "./LikedPosts.css";

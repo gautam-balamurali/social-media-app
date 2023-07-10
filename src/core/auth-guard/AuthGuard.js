@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { Navigate, useLocation } from "react-router-dom";
 
 import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";

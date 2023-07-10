@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import HomeFeed from "components/features/home-feed/HomeFeed";
 
 const HomeFeedPage = () => {

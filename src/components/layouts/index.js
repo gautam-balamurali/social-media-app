@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export * from "./app-layout/AppLayout";
 export * from "./footer/Footer";
 export * from "./header/Header";

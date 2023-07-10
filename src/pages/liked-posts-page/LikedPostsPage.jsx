@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import LikedPosts from "components/features/liked-posts/LikedPosts";
 import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
 

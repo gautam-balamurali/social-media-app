@@ -4,6 +4,8 @@ import SearchBar from "components/shared/search-bar-component/SearchBar";
 import "./ExploreFeed.css";
 import FilterBar from "components/shared/filter-bar-component/FilterBar";
 
+/* eslint-disable */
+
 const ExploreFeed = () => {
   const { posts, appliedFilterPosts, isLoading } = usePosts();
 

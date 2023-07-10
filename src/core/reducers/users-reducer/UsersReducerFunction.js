@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export const usersReducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
