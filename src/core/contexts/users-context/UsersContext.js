@@ -13,6 +13,7 @@ import {
   unfollowUserService,
 } from "core/services/follow-unfollow-service/followUnfollow.service";
 import { useAuthentication } from "../authentication-context/AuthenticationContext";
+import { toast } from "react-hot-toast";
 
 export const UsersContext = createContext();
 
@@ -27,7 +28,6 @@ export const UsersProvider = ({ children }) => {
   const fetchAllUsers = async () => {
     try {
       const response = await getAllUsersService();
-      console.log({ response }, "fetchAllUsers");
       if (response.status === 200 || response.status === 201)
         usersDispatch({
           type: "FETCH_ALL_USERS",
@@ -41,7 +41,6 @@ export const UsersProvider = ({ children }) => {
   const followUser = async (followUserId) => {
     try {
       const response = await followUserService(followUserId, token);
-      console.log({ response }, "followUser");
       if (response.status === 200 || response.status === 201) {
         const { followUser, user } = response?.data;
         const updatedUsersList = state.users.map(
@@ -54,16 +53,17 @@ export const UsersProvider = ({ children }) => {
           payload: updatedUsersList,
         });
         syncUserDetails(token, user);
+        toast.success(`Followed ${followUser.username} successfully!`);
       }
     } catch (error) {
       console.error(error);
+      toast.error("Oops! Operation failed!");
     }
   };
 
   const unfollowUser = async (followUserId) => {
     try {
       const response = await unfollowUserService(followUserId, token);
-      console.log({ response }, "unfollowUser");
       if (response.status === 200 || response.status === 201) {
         const { followUser, user } = response?.data;
         const updatedUsersList = state.users.map(
@@ -76,17 +76,17 @@ export const UsersProvider = ({ children }) => {
           payload: updatedUsersList,
         });
         syncUserDetails(token, user);
+        toast.success(`Unfollowed ${followUser.username} successfully!`);
       }
     } catch (error) {
       console.error(error);
+      toast.error("Oops! Operation failed!");
     }
   };
 
   const editUser = async (userData) => {
     try {
-      console.log({ userData });
       const response = await editUserService(userData, token);
-      console.log({ response }, "editUserService");
       if (response.status === 200 || response.status === 201) {
         const { user } = response?.data;
         const updatedUsersList = state.users.map((userDetails) =>
@@ -99,9 +99,11 @@ export const UsersProvider = ({ children }) => {
           payload: updatedUsersList,
         });
         syncUserDetails(token, user);
+        toast.success(`Profile updated successfully!`);
       }
     } catch (error) {
       console.error(error);
+      toast.error("Oops! Operation failed!");
     }
   };
 

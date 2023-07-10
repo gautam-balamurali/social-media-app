@@ -20,6 +20,7 @@ import {
   dislikePostService,
   likePostService,
 } from "core/services/like-dislike-posts-service/likeDislikePosts.service";
+import { toast } from "react-hot-toast";
 
 export const PostsContext = createContext();
 
@@ -34,7 +35,6 @@ export const PostsProvider = ({ children }) => {
   const fetchAllPosts = async () => {
     try {
       const response = await getAllPostsService();
-      console.log({ response }, "fetchAllPostsService");
       if (response.status === 200 || response.status === 201) {
         postsDispatch({
           type: "FETCH_ALL_POSTS",
@@ -66,7 +66,6 @@ export const PostsProvider = ({ children }) => {
   const fetchAllBookmarkedPosts = async () => {
     try {
       const response = await getBookmarkPostsService(token);
-      console.log({ response }, "fetchBookmarkedPosts");
       if (response.status === 200 || response.status === 201) {
         postsDispatch({
           type: "FETCH_ALL_BOOKMARKS",
@@ -81,15 +80,16 @@ export const PostsProvider = ({ children }) => {
   const addPostToBookmarks = async (postId) => {
     try {
       const response = await addToBookmarkService(postId, token);
-      console.log({ response }, "addPostToBookmarks");
       if (response.status === 200 || response.status === 201) {
         postsDispatch({
           type: "ADD_TO_BOOKMARKS",
           payload: response?.data?.bookmarks,
         });
+        toast.success("Post added to Bookmarks!");
       }
     } catch (error) {
       console.error(error);
+      toast.error("Oops! Operation Failed!");
     }
   };
 
@@ -102,9 +102,11 @@ export const PostsProvider = ({ children }) => {
           type: "REMOVE_FROM_BOOKMARKS",
           payload: response?.data?.bookmarks,
         });
+        toast.success("Post removed from Bookmarks!");
       }
     } catch (error) {
       console.error(error);
+      toast.error("Oops! Operation Failed!");
     }
   };
 
@@ -120,6 +122,7 @@ export const PostsProvider = ({ children }) => {
       }
     } catch (error) {
       console.error(error);
+      toast.error("Oops! Operation Failed!");
     }
   };
 
@@ -135,6 +138,7 @@ export const PostsProvider = ({ children }) => {
       }
     } catch (error) {
       console.error(error);
+      toast.error("Oops! Operation Failed!");
     }
   };
 
@@ -148,12 +152,12 @@ export const PostsProvider = ({ children }) => {
     postsDispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await addPostService(postData, token);
-      console.log({ response }, "createNewPostService");
       if (response.status === 200 || response.status === 201) {
         postsDispatch({
           type: "CREATE_POST",
           payload: response?.data?.posts,
         });
+        toast.success("New post added successfully!");
       }
     } catch (error) {
       console.error(error);
@@ -165,30 +169,33 @@ export const PostsProvider = ({ children }) => {
   const deletePost = async (postId) => {
     try {
       const response = await deletePostService(postId, token);
-      console.log({ response }, "deletePostsService");
       if (response.status === 200 || response.status === 201) {
         postsDispatch({
           type: "DELETE_POST",
           payload: response?.data?.posts,
         });
+        toast.success("Post deleted successfully!");
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+      toast.error("Oops! Operation Failed!");
+    }
   };
 
   const editPost = async (postData) => {
-    console.log({ postData });
     postsDispatch({ type: "LOADER_INITIATED" });
     try {
       const response = await editPostService(postData, token);
-      console.log({ response }, "editPostService");
       if (response.status === 200 || response.status === 201) {
         postsDispatch({
           type: "EDIT_POST",
           payload: response?.data?.posts,
         });
+        toast.success("Post edited successfully!");
       }
     } catch (error) {
       console.error(error);
+      toast.error("Oops! Operation Failed!");
     } finally {
       postsDispatch({ type: "LOADER_STOPPED" });
     }

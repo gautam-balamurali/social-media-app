@@ -10,7 +10,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .grid-layout {
     display: grid;
     grid-template-columns: 15rem auto auto;
