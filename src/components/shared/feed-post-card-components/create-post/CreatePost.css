@@ -21,12 +21,6 @@
 .user-profile-pic {
   border-radius: 50%;
   height: 2.5rem;
-  width: 2.5rem;
-}
-
-.user-profile-pic img {
-  border-radius: 50%;
-  height: 3rem;
   width: 3rem;
   object-fit: cover;
 }
