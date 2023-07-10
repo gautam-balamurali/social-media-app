@@ -76,13 +76,13 @@
   border: 1px solid rgba(246, 249, 251, 0.25);
 }
 
-.post-desc span {
+/* .post-desc span {
   white-space: pre-line;
 }
 
 .post-desc span::after {
   content: " ";
-}
+} */
 
 .separator {
   border: 1px solid #ccc;
@@ -117,6 +117,12 @@
 .btn-icon {
   display: flex;
   align-items: center;
+}
+
+.edit-post-container {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
 }
 
 @media (min-width: 768px) {

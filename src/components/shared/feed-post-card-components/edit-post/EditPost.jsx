@@ -15,19 +15,19 @@ import Button from "components/shared/button-component/Button";
 import { usePosts } from "core/contexts/posts-context/PostsContext";
 import InputField from "components/shared/input-field-component/InputField";
 import { handleMediaUpload } from "utils/handle-media-upload/handleMediaUpload";
-import "./CreatePost.css";
+import "./EditPost.css";
 
-const CreatePost = () => {
+const EditPost = ({ post, handleCloseEditModal }) => {
   const { user } = useAuthentication();
-  const { createNewPost } = usePosts();
+  const { editPost } = usePosts();
 
   const navigate = useNavigate();
   const [postData, setPostData] = useState({
-    content: "",
-    mediaUrl: "",
+    content: post?.content || "",
+    mediaUrl: post?.mediaUrl || "",
   });
   const [media, setMedia] = useState(null);
-  const createPostTextRef = useRef();
+  const editPostTextRef = useRef();
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [showGIFPicker, setShowGIFPicker] = useState(false);
 
@@ -76,17 +76,19 @@ const CreatePost = () => {
   };
 
   const deleteSelectedMedia = () => {
+    if (postData?.mediaUrl) setPostData((prev) => ({ ...prev, mediaUrl: "" }));
     setMedia(null);
   };
 
-  const createPostButtonClickHandler = async () => {
+  const editPostButtonClickHandler = async () => {
     if (media) {
       const mediaUploadResponse = await handleMediaUpload(media);
       setMedia(null);
-      createNewPost({ ...postData, mediaUrl: mediaUploadResponse.url });
-    } else createNewPost(postData);
+      editPost({ ...post, ...postData, mediaUrl: mediaUploadResponse.url });
+    } else editPost({ ...post, ...postData });
     setPostData((prev) => ({ ...prev, content: "", mediaUrl: "" }));
-    createPostTextRef.current.value = "";
+    editPostTextRef.current.value = "";
+    handleCloseEditModal();
   };
 
   const toggleEmojiModal = () => {
@@ -134,34 +136,42 @@ const CreatePost = () => {
               id="post-inpt-txt"
               placeholder="What's on your mind?!"
               onChange={handlePostDataContent}
-              ref={createPostTextRef}
+              ref={editPostTextRef}
               value={postData.content}
               maxLength={300}
             />
-            {media && (
+            {(postData?.mediaUrl || media) && (
               <div className="media-input-container">
-                {media?.type?.includes("video") && (
+                {(media?.type?.includes("video") ||
+                  postData?.mediaUrl.split("/")[4] === "video") && (
                   <video
-                    key={URL.createObjectURL(media)}
+                    key={
+                      media ? URL.createObjectURL(media) : postData?.mediaUrl
+                    }
                     controls
                     autoPlay
                     loop
                     className="media-input-video-section"
                   >
                     <source
-                      src={URL.createObjectURL(media)}
+                      src={
+                        media ? URL.createObjectURL(media) : postData?.mediaUrl
+                      }
                       alt="preview"
                       type="video/mp4"
                     />
                   </video>
                 )}
                 {(media?.type?.includes("image") ||
-                  (typeof media === "string" && media?.includes("gif"))) && (
+                  (typeof media === "string" && media?.includes("gif")) ||
+                  postData?.mediaUrl.split("/")[4] === "image") && (
                   <img
                     src={
-                      typeof media === "string" && media?.includes("gif")
-                        ? media
-                        : URL.createObjectURL(media)
+                      media
+                        ? typeof media === "string" && media?.includes("gif")
+                          ? media
+                          : URL.createObjectURL(media)
+                        : postData?.mediaUrl
                     }
                     alt="preview"
                     className="media-input-section"
@@ -178,9 +188,9 @@ const CreatePost = () => {
         </div>
         <div className="post-input-actions">
           <div className="post-input-features">
-            <label className="add-media-label" htmlFor="file-input">
+            <label className="add-media-label" htmlFor="edit-file-input">
               <InputField
-                id={"file-input"}
+                id={"edit-file-input"}
                 type={"file"}
                 accept={"image/*, video/*"}
                 className={"hidden"}
@@ -203,7 +213,7 @@ const CreatePost = () => {
                 <OutsideClickHandler
                   onOutsideClick={handleGIFPickerOutsideClick}
                 >
-                  <div className="gif-container">
+                  <div className="edit-gif-container">
                     <GifPicker
                       tenorApiKey={`${process.env.REACT_APP_TENOR_API_KEY}`}
                       onGifClick={gifClickHandler}
@@ -241,9 +251,9 @@ const CreatePost = () => {
           </div>
           <Button
             disabled={isPostButtonDisabled()}
-            label={"Tweet"}
+            label={"Update"}
             className={"post-btn"}
-            clickHandlerFunction={createPostButtonClickHandler}
+            clickHandlerFunction={editPostButtonClickHandler}
           />
         </div>
       </div>
@@ -251,4 +261,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default EditPost;

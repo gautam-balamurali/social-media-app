@@ -28,7 +28,7 @@ const ProfileCard = ({ userDetails }) => {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
 
   const { posts } = usePosts();
-  const { user: currentUser } = useAuthentication();
+  const { user: currentUser, logOutUser } = useAuthentication();
   const { followUser, unfollowUser } = useUsers();
 
   const postsCount = posts?.filter(
@@ -117,6 +117,7 @@ const ProfileCard = ({ userDetails }) => {
                 </>
               }
               className={"profile-action-default-btn"}
+              clickHandlerFunction={logOutUser}
             />
           </>
         )}
