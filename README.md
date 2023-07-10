@@ -1,4 +1,93 @@
-# Getting Started with Create React App
+<div align="center">
+    <h1 style="display: flex; align-items: center; gap: 1rem; letter-spacing:0.2em; align-self:center">
+<img style=' border-radius: 50%; width: 3.5rem; height: 3.5rem; object-fit: cover' src='https://res.cloudinary.com/dbe8yf165/image/upload/v1688964194/twitlyx/logo-2_ihpmf7.png' />TwitLyx</h1>
+     <h3 >
+      TwitLyx is a compact social media app designed for connecting and engaging with others. It offers a simple and intuitive platform where people can share their thoughts, photos, videos, GIFs and emojis with their friends and explore different points of view. Users can converse with each other and express their opinions in a fun and interactive way.
+    </h3>
+</div>
+
+---
+
+## 💻 How to run the app locally?
+
+```
+$ git clone https://github.com/gautam-balamurali/social-media-app.git
+$ cd social-media-app
+$ npm install
+$ npm start
+```
+
+---
+
+## 🚀 Deployed Link
+
+Check out the live demo of TwitLyx: [TwitLyx]()
+
+---
+
+## 🛠️ Built With
+
+- ⚛️ React JS
+- 🚦 React Router v6
+- 🔄 React Context API + useReducer
+- 🎨 Vanilla CSS
+- 🗃️ Git For Version Control
+- 🌐 Netlify for Deployment
+- ☁️ Cloudinary for Image Hosting
+
+---
+
+## ✨ Features
+
+- User Authentication Pages 🚪
+  - User Signup 📝
+  - User Login 🔐
+  - User Logout 🔓
+- Home Page 🏠
+  - View your own posts and posts from people you follow 📃
+- User Search Bar 🔍
+  - Search for other users 🔎
+  - Click on a user to go to their profile page 👤
+- Follow Menu Bar 👥
+  - Suggestions of users to follow 👀
+- Explore Page 🔍
+  - View posts from other users 🌍
+- Bookmarks Page 🔖
+  - View bookmarked posts 📑
+- Liked Page 👍
+  - View liked posts ❤️
+- User Profile Page 👤
+  - Edit your profile details - profile photo, cover photo, bio, and website link ✏️
+- Other Users Profile Page 👥
+  - View other users' profile page
+  - Check their posts
+  - Follow/unfollow them
+- Filters for Sorting Posts 🗂️
+  - Sort posts by latest, oldest, and trending
+- Posts ✉️
+  - Create posts with photos, videos, emojis and gifs 📷📹😄
+  - Update posts
+  - Delete posts
+  - Like and bookmark posts
+  - Click on a user's name or image to go to their profile page 👤
+  <!-- - Comments 💬
+  - Add comments to posts
+  - Delete comments
+  - Update comments -->
+- Alerts 🚨
+  - Alerts in the app to notify users about success/failure operations
+  <!-- - Theme 🌗
+  - Toggle between light and dark themes -->
+- Responsive 📱
+  - All screens are responsive
+
+---
+
+## Demo Video
+
+- ***
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
