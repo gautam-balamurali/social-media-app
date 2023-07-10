@@ -205,6 +205,12 @@
   }
 }
 
+@media (max-width: 250px) {
+  .edit-btn-jio {
+    display: none;
+  }
+}
+
 @media (min-width: 1024px) {
   .profile-header {
     border: none;

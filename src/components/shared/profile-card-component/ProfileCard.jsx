@@ -15,12 +15,16 @@ import LikedPosts from "components/features/liked-posts/LikedPosts";
 import { usePosts } from "core/contexts/posts-context/PostsContext";
 import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
 import { useUsers } from "core/contexts/users-context/UsersContext";
+import EditProfile from "./edit-profile/EditProfile";
+import CustomModal from "../custom-modal-component/CustomModal";
 
 const ProfileCard = ({ userDetails }) => {
   const navigate = useNavigate();
   const [isCategorySelected, setCategorySelected] = useState(
     userProfileDetailsTabCategories[0]
   );
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
+
   const { posts } = usePosts();
   const { user: currentUser } = useAuthentication();
   const { followUser, unfollowUser } = useUsers();
@@ -38,6 +42,13 @@ const ProfileCard = ({ userDetails }) => {
     currentUser?.following.find(
       ({ username }) => username === userDetails?.username
     );
+
+  const handleOpenEditModal = () => {
+    setEditModalOpen(true);
+  };
+  const handleCloseEditModal = () => {
+    setEditModalOpen(false);
+  };
 
   return (
     <div className="user-profile-section">
@@ -91,7 +102,8 @@ const ProfileCard = ({ userDetails }) => {
                   <span className="profile-action-btn-txt">Edit</span>
                 </>
               }
-              className={"profile-action-default-btn"}
+              className={"profile-action-default-btn edit-btn-jio"}
+              clickHandlerFunction={handleOpenEditModal}
             />
             <Button
               label={
@@ -189,6 +201,17 @@ const ProfileCard = ({ userDetails }) => {
           )}
         </div>
       </div>
+
+      <CustomModal
+        isOpen={isEditModalOpen}
+        onClose={handleCloseEditModal}
+        showCloseButton={false}
+      >
+        <EditProfile
+          userDetails={userDetails}
+          handleCloseEditModal={handleCloseEditModal}
+        />
+      </CustomModal>
     </div>
   );
 };

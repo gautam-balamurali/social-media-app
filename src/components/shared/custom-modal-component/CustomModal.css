@@ -1,0 +1,45 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(0.5rem); /* Apply the blur effect */
+  z-index: 2001;
+  padding: 1rem;
+}
+
+.modal {
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close-btn {
+  position: absolute;
+  display: inline-block;
+  top: 1%;
+  right: 1%;
+  background: transparent;
+  border-radius: 50%;
+  padding: 0.4rem 0.6rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.modal-open {
+  overflow: hidden; /* Prevent scrolling of the body content when modal is open */
+}
+
+@media (min-width: 1024px) {
+  .modal-close-btn:hover {
+    transform: scale(1.1);
+  }
+}
