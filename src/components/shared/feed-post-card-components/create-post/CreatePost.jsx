@@ -16,10 +16,11 @@ import { usePosts } from "core/contexts/posts-context/PostsContext";
 import InputField from "components/shared/input-field-component/InputField";
 import { handleMediaUpload } from "utils/handle-media-upload/handleMediaUpload";
 import "./CreatePost.css";
+import { toast } from "react-hot-toast";
 
 const CreatePost = () => {
   const { user } = useAuthentication();
-  const { createNewPost } = usePosts();
+  const { createNewPost, postsDispatch } = usePosts();
 
   const navigate = useNavigate();
   const [postData, setPostData] = useState({
@@ -33,7 +34,7 @@ const CreatePost = () => {
 
   useEffect(() => {
     if (postData?.content.length >= 300)
-      alert("You have entered maximum allowed characters!");
+      toast.error("You have entered maximum allowed characters!");
   }, [postData?.content]);
 
   const isPostButtonDisabled = () =>
@@ -61,14 +62,14 @@ const CreatePost = () => {
         selectedMedia?.type?.includes("image") &&
         selectedMedia?.size > maxSizeImage
       ) {
-        alert("Image size should be less than equal to 10 MB");
+        toast.error("Image size should be less than equal to 10 MB");
         return;
       }
       if (
         selectedMedia?.type?.includes("video") &&
         selectedMedia?.size > maxSizeVideo
       ) {
-        alert("Video size should be less than equal to 100 MB");
+        toast.error("Video size should be less than equal to 100 MB");
         return;
       }
       setMedia(selectedMedia);
@@ -80,6 +81,7 @@ const CreatePost = () => {
   };
 
   const createPostButtonClickHandler = async () => {
+    postsDispatch({ type: "LOADER_INITIATED" });
     if (media) {
       const mediaUploadResponse = await handleMediaUpload(media);
       setMedia(null);

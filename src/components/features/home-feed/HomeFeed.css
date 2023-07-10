@@ -6,14 +6,12 @@
   overflow-x: hidden;
 }
 
-@media (min-width: 1024px) {
-  .home-feed-users-follow-bar {
-    display: none;
-  }
-}
-
 @media (min-width: 1280px) {
   .posts-container {
     min-width: 55.9rem;
+  }
+
+  .home-feed-users-follow-bar {
+    display: none;
   }
 }

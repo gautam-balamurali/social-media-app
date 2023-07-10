@@ -126,7 +126,8 @@ button {
 }
 
 .ms-view,
-.ls-view {
+.ls-view,
+.xls-view {
   display: none;
 }
 
@@ -179,5 +180,11 @@ button {
 
   button:hover {
     transform: scale(1.1);
+  }
+}
+
+@media (min-width: 1280px) {
+  .xls-view {
+    display: inline-block;
   }
 }
