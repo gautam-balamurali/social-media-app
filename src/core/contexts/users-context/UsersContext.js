@@ -2,7 +2,10 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 
 import { usersReducer } from "core/reducers/users-reducer/UsersReducerFunction";
 import { usersReducerInitialState } from "core/reducers/users-reducer/UsersReducerInitialState";
-import { getAllUsersService } from "core/services/user-service/user.service";
+import {
+  editUserService,
+  getAllUsersService,
+} from "core/services/user-service/user.service";
 import {
   followUserService,
   unfollowUserService,
@@ -77,13 +80,36 @@ export const UsersProvider = ({ children }) => {
     }
   };
 
+  const editUser = async (userData) => {
+    try {
+      console.log({ userData });
+      const response = await editUserService(userData, token);
+      console.log({ response }, "editUserService");
+      if (response.status === 200 || response.status === 201) {
+        const { user } = response?.data;
+        const updatedUsersList = state.users.map((userDetails) =>
+          userDetails.username === user.username
+            ? { ...userDetails, ...user }
+            : userDetails
+        );
+        usersDispatch({
+          type: "UPDATE_USERS",
+          payload: updatedUsersList,
+        });
+        syncUserDetails(token, user);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     fetchAllUsers();
   }, []);
 
   return (
     <UsersContext.Provider
-      value={{ ...state, usersDispatch, followUser, unfollowUser }}
+      value={{ ...state, usersDispatch, followUser, unfollowUser, editUser }}
     >
       {children}
     </UsersContext.Provider>
