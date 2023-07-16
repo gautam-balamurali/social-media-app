@@ -142,37 +142,39 @@ const CreatePost = () => {
             />
             {media && (
               <div className="media-input-container">
-                {media?.type?.includes("video") && (
-                  <video
-                    key={URL.createObjectURL(media)}
-                    controls
-                    autoPlay
-                    loop
-                    className="media-input-video-section"
-                  >
-                    <source
-                      src={URL.createObjectURL(media)}
+                <div className="media-content">
+                  {media?.type?.includes("video") && (
+                    <video
+                      key={URL.createObjectURL(media)}
+                      controls
+                      autoPlay
+                      loop
+                      className="media-input-video-section"
+                    >
+                      <source
+                        src={URL.createObjectURL(media)}
+                        alt="preview"
+                        type="video/mp4"
+                      />
+                    </video>
+                  )}
+                  {(media?.type?.includes("image") ||
+                    (typeof media === "string" && media?.includes("gif"))) && (
+                    <img
+                      src={
+                        typeof media === "string" && media?.includes("gif")
+                          ? media
+                          : URL.createObjectURL(media)
+                      }
                       alt="preview"
-                      type="video/mp4"
+                      className="media-input-section"
                     />
-                  </video>
-                )}
-                {(media?.type?.includes("image") ||
-                  (typeof media === "string" && media?.includes("gif"))) && (
-                  <img
-                    src={
-                      typeof media === "string" && media?.includes("gif")
-                        ? media
-                        : URL.createObjectURL(media)
-                    }
-                    alt="preview"
-                    className="media-input-section"
-                  />
-                )}
-                <div onClick={deleteSelectedMedia} className="close-btn">
-                  <span className="close-btn-icon">
-                    <MdCancel size={24} />
-                  </span>
+                  )}
+                  <div onClick={deleteSelectedMedia} className="close-btn">
+                    <span className="close-btn-icon">
+                      <MdCancel size={24} />
+                    </span>
+                  </div>
                 </div>
               </div>
             )}

@@ -193,6 +193,12 @@
   cursor: pointer;
 }
 
+@media (max-width: 320px) {
+  .profile-user-details {
+    top: 10.5rem;
+  }
+}
+
 @media (max-width: 300px) {
   .profile-user-details {
     top: 13rem;
