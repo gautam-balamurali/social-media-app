@@ -91,21 +91,32 @@
 .media-input-container {
   display: flex;
   position: relative;
-  border-radius: 0.9rem;
   overflow: hidden;
+  justify-content: center;
+}
+
+.media-content {
+  position: relative;
 }
 
 .media-input-section {
   width: 100%;
   height: auto;
+  max-width: 25rem;
+  max-height: 25rem;
   object-fit: fill;
-  aspect-ratio: 1.43/1;
+  border-radius: 0.9rem;
+  aspect-ratio: auto;
 }
 
 .media-input-video-section {
   width: 100%;
   height: auto;
+  max-width: 40rem;
+  max-height: 35rem;
   object-fit: fill;
+  border-radius: 0.9rem;
+  aspect-ratio: auto;
 }
 
 .close-btn {
@@ -189,6 +200,12 @@
 }
 
 @media (min-width: 1280px) {
+  .create-post-grid {
+    min-width: 37.8rem;
+  }
+}
+
+@media (min-width: 1500px) {
   .create-post-grid {
     min-width: 53.8rem;
   }

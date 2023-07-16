@@ -144,45 +144,49 @@ const EditPost = ({ post, handleCloseEditModal }) => {
             />
             {(postData?.mediaUrl || media) && (
               <div className="media-input-container">
-                {(media?.type?.includes("video") ||
-                  postData?.mediaUrl.split("/")[4] === "video") && (
-                  <video
-                    key={
-                      media ? URL.createObjectURL(media) : postData?.mediaUrl
-                    }
-                    controls
-                    autoPlay
-                    loop
-                    className="media-input-video-section"
-                  >
-                    <source
-                      src={
+                <div className="media-content">
+                  {(media?.type?.includes("video") ||
+                    postData?.mediaUrl.split("/")[4] === "video") && (
+                    <video
+                      key={
                         media ? URL.createObjectURL(media) : postData?.mediaUrl
                       }
+                      controls
+                      autoPlay
+                      loop
+                      className="media-input-video-section"
+                    >
+                      <source
+                        src={
+                          media
+                            ? URL.createObjectURL(media)
+                            : postData?.mediaUrl
+                        }
+                        alt="preview"
+                        type="video/mp4"
+                      />
+                    </video>
+                  )}
+                  {(media?.type?.includes("image") ||
+                    (typeof media === "string" && media?.includes("gif")) ||
+                    postData?.mediaUrl.split("/")[4] === "image") && (
+                    <img
+                      src={
+                        media
+                          ? typeof media === "string" && media?.includes("gif")
+                            ? media
+                            : URL.createObjectURL(media)
+                          : postData?.mediaUrl
+                      }
                       alt="preview"
-                      type="video/mp4"
+                      className="media-input-section"
                     />
-                  </video>
-                )}
-                {(media?.type?.includes("image") ||
-                  (typeof media === "string" && media?.includes("gif")) ||
-                  postData?.mediaUrl.split("/")[4] === "image") && (
-                  <img
-                    src={
-                      media
-                        ? typeof media === "string" && media?.includes("gif")
-                          ? media
-                          : URL.createObjectURL(media)
-                        : postData?.mediaUrl
-                    }
-                    alt="preview"
-                    className="media-input-section"
-                  />
-                )}
-                <div onClick={deleteSelectedMedia} className="close-btn">
-                  <span className="close-btn-icon">
-                    <MdCancel size={24} />
-                  </span>
+                  )}
+                  <div onClick={deleteSelectedMedia} className="close-btn">
+                    <span className="close-btn-icon">
+                      <MdCancel size={24} />
+                    </span>
+                  </div>
                 </div>
               </div>
             )}
@@ -238,7 +242,7 @@ const EditPost = ({ post, handleCloseEditModal }) => {
                 <OutsideClickHandler
                   onOutsideClick={handleEmojiPickerOutsideClick}
                 >
-                  <div className="emoji-container">
+                  <div className="edit-emoji-container">
                     <Picker
                       data={data}
                       emojiSize={20}

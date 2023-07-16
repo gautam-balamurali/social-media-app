@@ -8,6 +8,7 @@ import "./Login.css";
 import { useAuthentication } from "core/contexts/authentication-context/AuthenticationContext";
 import InputField from "components/shared/input-field-component/InputField";
 import Button from "components/shared/button-component/Button";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const [loginCredentials, setLoginCredentials] = useState({
@@ -33,9 +34,9 @@ const Login = () => {
   const loginClickHandler = async (loginCredentials) => {
     const userDetails = await loginUser(loginCredentials);
     if (userDetails) {
-      console.log(`Welcome back, ${userDetails?.firstName}!`);
+      toast.success(`Welcome back, ${userDetails?.firstName}!`);
     } else {
-      console.error("Login failed! Please try again with correct credentials.");
+      toast.error("Login failed! Please try again with correct credentials.");
     }
   };
 

@@ -8,6 +8,7 @@ import { useAuthentication } from "core/contexts/authentication-context/Authenti
 import InputField from "components/shared/input-field-component/InputField";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Button from "components/shared/button-component/Button";
+import { toast } from "react-hot-toast";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -51,10 +52,9 @@ const Signup = () => {
   const signUpHandler = async (signUpCredentials) => {
     const userDetails = await signUpUser(signUpCredentials);
     if (userDetails) {
-      console.log("hello signup is successfull!");
-      console.log({ userDetails });
+      toast.success(`Welcome to TwitLyx, ${userDetails?.firstName}!`);
     } else {
-      console.error("Signup failed!");
+      toast.error("Signup failed! Please try again with correct credentials!");
     }
   };
 
@@ -62,7 +62,7 @@ const Signup = () => {
     event.preventDefault();
     signUpCredentials.password === signUpCredentials.confirmPassword
       ? signUpHandler(signUpCredentials)
-      : console.error("Passwords don't match, please try again!");
+      : toast.error("Passwords don't match, please try again!");
   };
 
   const toggleShowHidePassword = () => {
