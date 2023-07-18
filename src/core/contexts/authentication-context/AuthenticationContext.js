@@ -6,6 +6,7 @@ import {
   loginService,
   signUpService,
 } from "core/services/authentication-service/authentication.service";
+import { toast } from "react-hot-toast";
 
 export const AuthenticationContext = createContext();
 
@@ -27,6 +28,7 @@ export const AuthenticationProvider = ({ children }) => {
     setLoggedInUserDetails((prev) => ({ ...prev, token: "", user: null }));
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    toast.success("Logged out successfully!");
   };
 
   const loginUser = async (loginDetails) => {

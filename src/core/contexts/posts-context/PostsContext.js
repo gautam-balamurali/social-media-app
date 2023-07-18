@@ -96,7 +96,6 @@ export const PostsProvider = ({ children }) => {
   const removePostFromBookmarks = async (postId) => {
     try {
       const response = await removeFromBookmarkService(postId, token);
-      console.log({ response }, "removePostFromBookmarks");
       if (response.status === 200 || response.status === 201) {
         postsDispatch({
           type: "REMOVE_FROM_BOOKMARKS",
@@ -113,7 +112,6 @@ export const PostsProvider = ({ children }) => {
   const likePost = async (postId) => {
     try {
       const response = await likePostService(postId, token);
-      console.log({ response }, "likePostResponse");
       if (response.status === 200 || response.status === 201) {
         postsDispatch({
           type: "LIKE_POST",
@@ -129,7 +127,6 @@ export const PostsProvider = ({ children }) => {
   const dislikePost = async (postId) => {
     try {
       const response = await dislikePostService(postId, token);
-      console.log({ response }, "dislikePostResponse");
       if (response.status === 200 || response.status === 201) {
         postsDispatch({
           type: "DISLIKE_POST",
